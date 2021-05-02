@@ -1,9 +1,10 @@
 import './App.scss';
+import FormPage from './pages/FormPage';
 
 function App() {
     return (
         <div className="App">
-            hello world
+            <FormPage />
         </div>
     );
 }
