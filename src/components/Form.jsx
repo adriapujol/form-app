@@ -51,25 +51,22 @@ const Form = () => {
 
 
     return (
-        <>
-            <form>
-                {
-                    showStep(formStep)
-                }
-            </form>
-            <div>Count {formStep}</div>
-            {
-                (formStep > 0) && <button onClick={prevStep}>Prev</button>
-            }
-            {
-                (formStep < 4) && <button onClick={nextStep}>Next</button>
-            }
-            {
-                (formStep === 4) && <button onClick={() => console.log("SUBMIT")}>Submit</button>
-            }
-
-
-        </>
+        <div className="container">
+            <div className="form-container">
+                <div className="form-steps"></div>
+                <form>
+                    {
+                        showStep(formStep)
+                    }
+                </form>
+                <div>Count {formStep}</div>
+                <div className="form-controls">
+                    {(formStep > 0) && <button onClick={prevStep}>Prev</button>}
+                    {(formStep < 4) && <button onClick={nextStep}>Next</button>}
+                    {(formStep === 4) && <button onClick={() => console.log("SUBMIT")}>Submit</button>}
+                </div>
+            </div>
+        </div>
     )
 };
 

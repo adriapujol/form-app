@@ -1,10 +1,11 @@
 import './App.scss';
 import FormPage from './pages/FormPage';
+import MultiForm from './components/Form';
 
 function App() {
     return (
         <div className="App">
-            <FormPage />
+            <MultiForm />
         </div>
     );
 }
