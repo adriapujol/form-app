@@ -9,6 +9,20 @@ import Accommodation from './Accommodation';
 const Form = () => {
 
     const [formStep, setFormStep] = useState(0);
+    const [name, setName] = useState();
+    const [lastName, setLastName] = useState();
+    const [address, setAddress] = useState();
+    const [phone, setPhone] = useState();
+    const [email, setEmail] = useState();
+    const [numberPersons, setNumberPersons] = useState();
+    const [minors, setMinors] = useState();
+    const [foodType, setFoodType] = useState();
+    const [allergies, setAllergies] = useState("");
+    const [accomodationSearch, setAccomodationSearch] = useState();
+    const [numRooms, setNumRooms] = useState();
+    const [transport, setTransport] = useState();
+    const [childcare, setChildcare] = useState();
+
 
     const showStep = (stepNum) => {
         switch (stepNum) {
@@ -20,6 +34,8 @@ const Form = () => {
                 return <Menu />;
             case 3:
                 return <Accommodation />;
+            case 4:
+                return <div>If you are ok with your answers, go ahead, submit!</div>;
             default:
                 return <div>There are no more steps</div>
         }
@@ -42,8 +58,17 @@ const Form = () => {
                 }
             </form>
             <div>Count {formStep}</div>
-            <button onClick={prevStep}>Prev</button>
-            <button onClick={nextStep}>Next</button>
+            {
+                (formStep > 0) && <button onClick={prevStep}>Prev</button>
+            }
+            {
+                (formStep < 4) && <button onClick={nextStep}>Next</button>
+            }
+            {
+                (formStep === 4) && <button onClick={() => console.log("SUBMIT")}>Submit</button>
+            }
+
+
         </>
     )
 };

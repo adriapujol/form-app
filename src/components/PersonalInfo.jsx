@@ -12,8 +12,6 @@ const PersonalInfo = () => {
             <input type="text" id="address" name="address" placeholder="Address..." />
             <label htmlFor="phone">Phone</label>
             <input type="text" id="phone" name="phone" placeholder="Phone..." />
-            <label htmlFor="phone">Phone</label>
-            <input type="text" id="phone" name="phone" placeholder="Phone..." />
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Email..." />
         </div>

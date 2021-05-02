@@ -3,19 +3,16 @@ import React from 'react';
 const Menu = () => {
     return (
         <div className="form-group">
-            <label htmlFor="step1">Personal Info</label>
-            <label htmlFor="fname">First Name</label>
-            <input type="text" id="fname" name="fname" placeholder="Name..." />
-            <label htmlFor="lname">Last Name</label>
-            <input type="text" id="lname" name="lname" placeholder="Last Name..." />
-            <label htmlFor="address">Address</label>
-            <input type="text" id="address" name="address" placeholder="Address..." />
-            <label htmlFor="phone">Phone</label>
-            <input type="text" id="phone" name="phone" placeholder="Phone..." />
-            <label htmlFor="phone">Phone</label>
-            <input type="text" id="phone" name="phone" placeholder="Phone..." />
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email..." />
+            <label htmlFor="step1">Menu</label>
+            <label htmlFor="typeFood">First Name</label>
+            <label htmlFor="omnivore">Omnivore</label>
+            <input type="radio" id="typeFood" name="typeFood" value="omnivore" />
+            <label htmlFor="omnivore">Vegeterian</label>
+            <input type="radio" id="typeFood" name="typeFood" value="vegeterian" />
+            <label htmlFor="omnivore">Vegan</label>
+            <input type="radio" id="typeFood" name="typeFood" value="Vegan" />
+            <label htmlFor="allergies">Food allergies</label>
+            <input type="text" id="allergies" name="allergies" placeholder="Type any allergies" />
         </div>
     )
 }
