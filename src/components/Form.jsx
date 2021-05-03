@@ -9,31 +9,46 @@ import Accommodation from './Accommodation';
 const Form = () => {
 
     const [formStep, setFormStep] = useState(0);
-    const [name, setName] = useState();
-    const [lastName, setLastName] = useState();
-    const [address, setAddress] = useState();
-    const [phone, setPhone] = useState();
-    const [email, setEmail] = useState();
-    const [numberPersons, setNumberPersons] = useState();
-    const [minors, setMinors] = useState();
-    const [foodType, setFoodType] = useState();
-    const [allergies, setAllergies] = useState("");
-    const [accomodationSearch, setAccomodationSearch] = useState();
-    const [numRooms, setNumRooms] = useState();
-    const [transport, setTransport] = useState();
-    const [childcare, setChildcare] = useState();
+    const [formData, setFormData] = useState(
+        {
+            fname: '',
+            lname: '',
+            address: '',
+            phone: '',
+            email: '',
+            numberPersons: 0,
+            minors: 'no',
+            numberMinors: 0,
+            typeFood: 'omnivore',
+            allergies: '',
+            hotel: 'no',
+            numberRooms: 0,
+            transport: 'no',
+            childcare: 'no'
+        }
+    )
+
+
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }))
+
+    }
 
 
     const showStep = (stepNum) => {
         switch (stepNum) {
             case 0:
-                return <PersonalInfo />;
+                return <PersonalInfo handleChange={handleChange} formData={formData} />;
             case 1:
-                return <Companions />;
+                return <Companions handleChange={handleChange} formData={formData} />;
             case 2:
-                return <Menu />;
+                return <Menu handleChange={handleChange} formData={formData} />;
             case 3:
-                return <Accommodation />;
+                return <Accommodation handleChange={handleChange} formData={formData} />;
             case 4:
                 return <div>If you are ok with your answers, go ahead, submit!</div>;
             default:
