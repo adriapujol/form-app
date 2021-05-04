@@ -13,11 +13,11 @@ const Menu = ({ handleChange, formData }) => {
                 <input type="radio" id="typeFood" name="typeFood" value="omnivore" checked={typeFood === "omnivore"} onChange={handleChange} />
                 Omnivore
             </label>
-            <label htmlFor="omnivore">
+            <label htmlFor="vegeterian">
                 <input type="radio" id="typeFood" name="typeFood" value="vegeterian" checked={typeFood === "vegeterian"} onChange={handleChange} />
                 Vegeterian
             </label>
-            <label htmlFor="omnivore">
+            <label htmlFor="vegan">
                 <input type="radio" id="typeFood" name="typeFood" value="vegan" checked={typeFood === "vegan"} onChange={handleChange} />
                 Vegan
             </label>

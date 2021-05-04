@@ -20,7 +20,7 @@ const Accommodation = ({ handleChange, formData }) => {
             </label>
 
             <label htmlFor="numberRooms">Number of rooms</label>
-            <input type="number" id="numberRooms" name="numberRooms" min="0" defaultValue="0" value={numberRooms} onChange={handleChange} />
+            <input type="number" id="numberRooms" name="numberRooms" min="0" value={numberRooms} onChange={handleChange} />
 
             <label htmlFor="transport">Do you want transport from the Hotel to the Wedding?</label>
             <label htmlFor="transportYes">

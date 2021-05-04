@@ -9,7 +9,7 @@ const Companions = ({ handleChange, formData }) => {
             <label htmlFor="step2">Companions</label>
 
             <label htmlFor="numberPersons">Number of companions</label>
-            <input type="number" min="0" id="numberPersons" name="numberPersons" defaultValue="0" value={numberPersons} onChange={handleChange} />
+            <input type="number" min="0" id="numberPersons" name="numberPersons" value={numberPersons} onChange={handleChange} />
 
             <label htmlFor="minors">Any minors? (Age {"<"} 14)</label>
             <label htmlFor="minorsYes">
@@ -22,7 +22,7 @@ const Companions = ({ handleChange, formData }) => {
             </label>
 
             <label htmlFor="numberMinors">Number of minors</label>
-            <input type="number" min="0" id="numberMinors" name="numberMinors" defaultValue="0" value={numberMinors} onChange={handleChange} />
+            <input type="number" min="0" id="numberMinors" name="numberMinors" value={numberMinors} onChange={handleChange} />
 
         </div>
     )
