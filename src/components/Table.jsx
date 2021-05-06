@@ -4,8 +4,6 @@ import TableRow from './TableRow';
 
 const Table = ({ users }) => {
 
-    console.log(users)
-
     return (
         <table>
             <thead>

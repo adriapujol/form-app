@@ -42,7 +42,7 @@ const Form = ({ setUsers }) => {
 
     const postForm = async () => {
 
-        setFormData(prevData => ({ ...prevData, formDone: true }));
+
 
         try {
             const response = await axios.post('http://localhost:3001/users/add', formData);
@@ -71,7 +71,6 @@ const Form = ({ setUsers }) => {
             numberRooms: 0,
             transport: 'no',
             childcare: 'no',
-            formDone: false
         })
         alert("SUBMIT");
     }
