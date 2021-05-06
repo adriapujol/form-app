@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Form.scss';
 import PersonalInfo from '../components/PersonalInfo';
 import Companions from '../components/Companions';
@@ -24,7 +25,8 @@ const Form = ({ setUsers }) => {
             hotel: 'no',
             numberRooms: 0,
             transport: 'no',
-            childcare: 'no'
+            childcare: 'no',
+            formDone: false
         }
     )
 
@@ -38,8 +40,22 @@ const Form = ({ setUsers }) => {
 
     }
 
+    const postForm = async () => {
+
+        setFormData(prevData => ({ ...prevData, formDone: true }));
+
+        try {
+            const response = await axios.post('http://localhost:3001/users/add', formData);
+            console.log(response.data);
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
+
+        postForm();
         setUsers(prevUsers => [...prevUsers, formData]);
         setFormData({
             fname: '',
@@ -48,14 +64,14 @@ const Form = ({ setUsers }) => {
             phone: '',
             email: '',
             numberPersons: 0,
-            minors: 'no',
             numberMinors: 0,
             typeFood: 'omnivore',
             allergies: '',
             hotel: 'no',
             numberRooms: 0,
             transport: 'no',
-            childcare: 'no'
+            childcare: 'no',
+            formDone: false
         })
         alert("SUBMIT");
     }

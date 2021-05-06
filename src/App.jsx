@@ -10,6 +10,7 @@ function App() {
     return (
         <div className="App">
             <MultiForm setUsers={setUsers} />
+            {/* <Admin users={users} /> */}
             <Admin users={users} />
         </div>
     );
