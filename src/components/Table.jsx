@@ -2,7 +2,7 @@ import React from 'react';
 import './Table.scss';
 import TableRow from './TableRow';
 
-const Table = ({ users }) => {
+const Table = ({ users, setUsers }) => {
 
     return (
         <table>
@@ -21,11 +21,12 @@ const Table = ({ users }) => {
                     <th>Rooms</th>
                     <th>Transport</th>
                     <th>Childcare</th>
+                    <th>Controls</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    users.map((user, index) => <TableRow user={user} key={index} />)
+                    users.map((user, index) => <TableRow user={user} key={index} setUsers={setUsers} />)
                 }
             </tbody>
         </table>

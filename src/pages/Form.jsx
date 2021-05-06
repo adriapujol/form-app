@@ -72,6 +72,7 @@ const Form = ({ setUsers }) => {
             transport: 'no',
             childcare: 'no',
         })
+        setFormStep(0);
         alert("SUBMIT");
     }
 
@@ -115,7 +116,7 @@ const Form = ({ setUsers }) => {
                 <div className="form-controls">
                     {(formStep > 0) && <button onClick={prevStep}>Prev</button>}
                     {(formStep < 4) && <button onClick={nextStep}>Next</button>}
-                    {(formStep === 4) && <button onClick={() => setFormStep(0)}>Start</button>}
+                    {/* {(formStep === 4) && <button onClick={() => setFormStep(0)}>Start</button>} */}
                 </div>
             </div>
         </div>

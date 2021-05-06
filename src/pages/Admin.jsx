@@ -15,7 +15,7 @@ const Admin = () => {
                 console.log(response.data);
 
             } catch (err) {
-                console.log(err);
+                console.log(err.response);
             }
         }
         getUsers();
@@ -23,7 +23,7 @@ const Admin = () => {
 
     return (
         <div>
-            <Table users={users} />
+            <Table users={users} setUsers={setUsers} />
         </div>
     )
 }
