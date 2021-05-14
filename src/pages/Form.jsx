@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Form.scss';
-import PersonalInfo from './PersonalInfo';
-import Companions from './Companions';
-import Menu from './Menu';
-import Accommodation from './Accommodation';
+import PersonalInfo from '../components/PersonalInfo';
+import Companions from '../components/Companions';
+import Menu from '../components/Menu';
+import Accommodation from '../components/Accommodation';
 
 
-const Form = () => {
+const Form = ({ setUsers }) => {
 
     const [formStep, setFormStep] = useState(0);
     const [formData, setFormData] = useState(
@@ -24,7 +25,8 @@ const Form = () => {
             hotel: 'no',
             numberRooms: 0,
             transport: 'no',
-            childcare: 'no'
+            childcare: 'no',
+            formDone: false
         }
     )
 
@@ -38,6 +40,41 @@ const Form = () => {
 
     }
 
+    const postForm = async () => {
+
+
+
+        try {
+            const response = await axios.post('http://localhost:3001/users/add', formData);
+            console.log(response.data);
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        postForm();
+        setUsers(prevUsers => [...prevUsers, formData]);
+        setFormData({
+            fname: '',
+            lname: '',
+            address: '',
+            phone: '',
+            email: '',
+            numberPersons: 0,
+            numberMinors: 0,
+            typeFood: 'omnivore',
+            allergies: '',
+            hotel: 'no',
+            numberRooms: 0,
+            transport: 'no',
+            childcare: 'no',
+        })
+        setFormStep(0);
+        alert("SUBMIT");
+    }
 
     const showStep = (stepNum) => {
         switch (stepNum) {
@@ -69,16 +106,17 @@ const Form = () => {
         <div className="container">
             <div className="form-container">
                 <div className="form-steps"></div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     {
                         showStep(formStep)
                     }
+                    {(formStep === 4) && <button type="submit">Submit</button>}
                 </form>
                 <div>Count {formStep}</div>
                 <div className="form-controls">
                     {(formStep > 0) && <button onClick={prevStep}>Prev</button>}
                     {(formStep < 4) && <button onClick={nextStep}>Next</button>}
-                    {(formStep === 4) && <button onClick={() => console.log("SUBMIT")}>Submit</button>}
+                    {/* {(formStep === 4) && <button onClick={() => setFormStep(0)}>Start</button>} */}
                 </div>
             </div>
         </div>
