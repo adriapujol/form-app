@@ -42,8 +42,6 @@ const Form = ({ setUsers }) => {
 
     const postForm = async () => {
 
-
-
         try {
             const response = await axios.post('http://localhost:3001/users/add', formData);
             console.log(response.data);
