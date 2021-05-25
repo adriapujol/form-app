@@ -7,23 +7,24 @@ const Admin = () => {
 
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        const getUsers = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/users/');
-                setUsers(response.data);
-                console.log(response.data);
+    // useEffect(() => {
+    //     const getUsers = async () => {
+    //         try {
+    //             const response = await axios.get('http://localhost:3001/users/');
+    //             setUsers(response.data);
+    //             console.log(response.data);
 
-            } catch (err) {
-                console.log(err.response);
-            }
-        }
-        getUsers();
-    }, []);
+    //         } catch (err) {
+    //             console.log(err.response);
+    //         }
+    //     }
+    //     getUsers();
+    // }, []);
 
     return (
         <div>
-            <Table users={users} setUsers={setUsers} />
+            ADMIN PAGE PRIVATE
+            {/* <Table users={users} setUsers={setUsers} /> */}
         </div>
     )
 }

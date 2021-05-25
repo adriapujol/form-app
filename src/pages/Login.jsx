@@ -1,14 +1,18 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { UserContext } from '../context/UserContext';
+// import { useHistory } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
 
 function Login() {
-    const { user, setUser } = useContext(UserContext);
+    // const { user, setUser } = useContext(UserContext);
 
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const { currentUser, login } = useAuth();
+    // const history = useHistory();
 
     const usernameChange = (e) => {
         setUsername(e.target.value);
@@ -20,21 +24,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log("submit");
-        const userInfo = { username: username, password: password }
-        try {
-            setLoading(true);
-            const response = await axios.post('http://localhost:3001/user/login', userInfo, { withCredentials: true });
-            const user = response.data;
-            setUser(user);
-            setErrorMessage("");
-            setLoading(false);
-            alert("You are logged in");
-        } catch (error) {
-            console.log(error.response.data.error);
-            setErrorMessage(error.response.data.error);
-            setLoading(false);
-        }
+        login(username, password);
     }
 
     const showUsers = async () => {
@@ -68,7 +58,7 @@ function Login() {
                 <button className="login-btn" disabled={loading}>Login</button>
                 <div className="error-message">{errorMessage}</div>
             </form>
-            <div>{user && user.username}</div>
+            <div>{currentUser && currentUser.username}</div>
             <button onClick={showUsers}>Show Users</button>
         </div>
     )

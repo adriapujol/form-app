@@ -1,26 +1,38 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import './App.scss';
 import MultiForm from './pages/Form';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
-import { UserContext } from './context/UserContext';
+import Main from './pages/Main';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+
 
 function App() {
 
     const [user, setUser] = useState(null);
+    const [auth, setAuth] = useState();
     const [users, setUsers] = useState([]);
 
-    const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
+    const { currentUser } = useAuth()
+
 
     return (
-        <div className="App">
-            <UserContext.Provider value={providerUser}>
-                <Login />
-                {/* <MultiForm setUsers={setUsers} /> */}
-                {/* <Admin users={users} /> */}
-                {/* <Admin users={users} /> */}
-            </UserContext.Provider>
-        </div>
+        <Router>
+            <div className="App">
+                <Switch>
+                    <PrivateRoute exact path={["/", "/main"]} >
+                        <Main />
+                    </PrivateRoute>
+                    <Route path="/admin" component={Admin} />
+                    <PublicRoute restricted={true} path="/login">
+                        <Login />
+                    </PublicRoute>
+                </Switch>
+            </div>
+        </Router>
     );
 }
 
