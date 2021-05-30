@@ -1,9 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './App.scss';
-import MultiForm from './pages/Form';
+import Form from './pages/Form';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Main from './pages/Main';
+import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import PrivateRoute from './PrivateRoute';
@@ -24,9 +25,14 @@ function App() {
             <div className="App">
                 <Switch>
                     <PrivateRoute exact path={["/", "/main"]} >
+                        <Navbar />
                         <Main />
                     </PrivateRoute>
                     <Route path="/admin" component={Admin} />
+                    <PrivateRoute exact path="/form" >
+                        <Navbar />
+                        <Form />
+                    </PrivateRoute>
                     <PublicRoute restricted={true} path="/login">
                         <Login />
                     </PublicRoute>

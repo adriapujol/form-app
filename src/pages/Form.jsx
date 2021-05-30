@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Form.scss';
 import PersonalInfo from '../components/PersonalInfo';
 import Companions from '../components/Companions';
 import Menu from '../components/Menu';
 import Accommodation from '../components/Accommodation';
+import { useAuth } from '../context/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 
-const Form = ({ setUsers }) => {
+const Form = () => {
+
+    const { currentUser, setForm } = useAuth();
+    const history = useHistory();
 
     const [formStep, setFormStep] = useState(0);
     const [formData, setFormData] = useState(
@@ -30,6 +35,11 @@ const Form = ({ setUsers }) => {
         }
     )
 
+    useEffect(() => {
+        if (currentUser.formDone) {
+            setFormData(prevFormData => prevFormData = currentUser.formAnswers);
+        }
+    }, [])
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -41,9 +51,8 @@ const Form = ({ setUsers }) => {
     }
 
     const postForm = async () => {
-
         try {
-            const response = await axios.post('http://localhost:3001/users/add', formData);
+            const response = await axios.post(`http://localhost:3001/users//form/${currentUser._id}`, formData);
             console.log(response.data);
         } catch (error) {
             console.log(error.response.data.message)
@@ -54,23 +63,25 @@ const Form = ({ setUsers }) => {
         e.preventDefault();
 
         postForm();
-        setUsers(prevUsers => [...prevUsers, formData]);
-        setFormData({
-            fname: '',
-            lname: '',
-            address: '',
-            phone: '',
-            email: '',
-            numberPersons: 0,
-            numberMinors: 0,
-            typeFood: 'omnivore',
-            allergies: '',
-            hotel: 'no',
-            numberRooms: 0,
-            transport: 'no',
-            childcare: 'no',
-        })
+        // setUsers(prevUsers => [...prevUsers, formData]);
+        setForm(formData);
+        // setFormData({
+        //     fname: '',
+        //     lname: '',
+        //     address: '',
+        //     phone: '',
+        //     email: '',
+        //     numberPersons: 0,
+        //     numberMinors: 0,
+        //     typeFood: 'omnivore',
+        //     allergies: '',
+        //     hotel: 'no',
+        //     numberRooms: 0,
+        //     transport: 'no',
+        //     childcare: 'no',
+        // })
         setFormStep(0);
+        history.push("/");
         alert("SUBMIT");
     }
 

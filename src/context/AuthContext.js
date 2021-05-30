@@ -15,6 +15,8 @@ export function AuthProvider({ children }) {
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(true);
 
+    const history = useHistory();
+
     async function login(username, password) {
 
         const userInfo = { username: username, password: password }
@@ -31,8 +33,24 @@ export function AuthProvider({ children }) {
         }
     }
 
+    async function logout() {
+        try {
+            const response = await axios.get('http://localhost:3001/user/logout', { withCredentials: true });
+            setCurrentUser(null);
+            history.push("/login");
+        } catch (error) {
+            // console.log(error);
+            setErrorMessage(error.response.data.error);
+        }
+    }
+
+    function setForm(formData) {
+        setCurrentUser(prevCurrentUser => prevCurrentUser.formAnswers = formData);
+    }
+
     useEffect(() => {
         async function getUser() {
+            console.log("fired")
             try {
                 const response = await axios.get('http://localhost:3001/user/', { withCredentials: true });
                 const user = response.data;
@@ -46,12 +64,14 @@ export function AuthProvider({ children }) {
 
         getUser();
 
-    }, [])
+    }, []);
 
     const value = {
         currentUser,
         errorMessage,
-        login
+        setForm,
+        login,
+        logout
     }
 
     return (

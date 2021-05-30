@@ -1,18 +1,17 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-// import { useHistory } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 
 function Login() {
-    // const { user, setUser } = useContext(UserContext);
+
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-    const { currentUser, login } = useAuth();
-    // const history = useHistory();
+    // const [errorMessage, setErrorMessage] = useState("");
+    const { currentUser, errorMessage, login } = useAuth();
+
 
     const usernameChange = (e) => {
         setUsername(e.target.value);
