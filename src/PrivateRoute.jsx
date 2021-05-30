@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 
-function PrivateRoute({ children, ...rest }) {
+function PrivateRoute({ adminOnly, children, ...rest }) {
 
     const { currentUser } = useAuth();
 
@@ -10,7 +10,9 @@ function PrivateRoute({ children, ...rest }) {
         <Route
             {...rest}
             render={() => {
-                return currentUser ? children : <Redirect to="/login" />;
+                return currentUser ?
+                    adminOnly && currentUser.role !== "admin" ? <Redirect to="/" /> : children
+                    : <Redirect to="/login" />;
             }}
         >
         </Route>

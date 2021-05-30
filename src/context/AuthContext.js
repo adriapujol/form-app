@@ -1,7 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-
 
 const AuthContext = React.createContext();
 
@@ -14,8 +12,6 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(true);
-
-    const history = useHistory();
 
     async function login(username, password) {
 
@@ -37,15 +33,14 @@ export function AuthProvider({ children }) {
         try {
             const response = await axios.get('http://localhost:3001/user/logout', { withCredentials: true });
             setCurrentUser(null);
-            history.push("/login");
         } catch (error) {
-            // console.log(error);
+            console.log(error);
             setErrorMessage(error.response.data.error);
         }
     }
 
     function setForm(formData) {
-        setCurrentUser(prevCurrentUser => prevCurrentUser.formAnswers = formData);
+        setCurrentUser(prevCurrentUser => ({ ...prevCurrentUser, formAnswers: formData }));
     }
 
     useEffect(() => {

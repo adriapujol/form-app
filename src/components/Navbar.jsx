@@ -17,8 +17,12 @@ const Navbar = () => {
                     <Link to="/form">Form</Link>
                 </li>
                 {
+                    currentUser.role === "admin" && <li><Link to="/admin">Admin</Link></li>
+                }
+                {
                     currentUser && <li><button onClick={logout}>Logout</button></li>
                 }
+
             </ul>
         </nav>
     );

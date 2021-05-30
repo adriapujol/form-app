@@ -24,12 +24,15 @@ function App() {
         <Router>
             <div className="App">
                 <Switch>
-                    <PrivateRoute exact path={["/", "/main"]} >
+                    <PrivateRoute adminOnly={false} exact path={["/", "/main"]} >
                         <Navbar />
                         <Main />
                     </PrivateRoute>
-                    <Route path="/admin" component={Admin} />
-                    <PrivateRoute exact path="/form" >
+                    <PrivateRoute adminOnly={true} exact path="/admin" >
+                        <Navbar />
+                        <Admin />
+                    </PrivateRoute>
+                    <PrivateRoute adminOnly={false} exact path="/form" >
                         <Navbar />
                         <Form />
                     </PrivateRoute>
