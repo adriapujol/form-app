@@ -23,8 +23,7 @@ const Admin = () => {
     }, []);
 
     return (
-        <div>
-            ADMIN PAGE PRIVATE
+        <div className="container">
             <Table users={users} setUsers={setUsers} />
         </div>
     )

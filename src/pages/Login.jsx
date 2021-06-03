@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import './Login.scss';
 import { useAuth } from '../context/AuthContext';
 
 
@@ -26,17 +27,8 @@ function Login() {
         login(username, password);
     }
 
-    const showUsers = async () => {
-        try {
-            const response = await axios('http://localhost:3001/users/', { withCredentials: true, credentials: 'include' });
-            console.log(response.data)
-        } catch (error) {
-            console.log(error.response)
-        }
-    }
-
     return (
-        <div>
+        <div className="container">
             <form className="login-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -58,7 +50,6 @@ function Login() {
                 <div className="error-message">{errorMessage}</div>
             </form>
             <div>{currentUser && currentUser.username}</div>
-            <button onClick={showUsers}>Show Users</button>
         </div>
     )
 }
