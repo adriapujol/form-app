@@ -38,27 +38,28 @@ const Form = () => {
     useEffect(() => {
         if (currentUser.formDone) {
             setFormData(prevFormData => prevFormData = currentUser.formAnswers);
-        } else {
-            setFormData(
-                {
-                    fname: '',
-                    lname: '',
-                    address: '',
-                    phone: '',
-                    email: '',
-                    numberPersons: 0,
-                    minors: 'no',
-                    numberMinors: 0,
-                    typeFood: 'omnivore',
-                    allergies: '',
-                    hotel: 'no',
-                    numberRooms: 0,
-                    transport: 'no',
-                    childcare: 'no',
-                    formDone: false
-                }
-            )
         }
+        // else {
+        //     setFormData(
+        //         {
+        //             fname: '',
+        //             lname: '',
+        //             address: '',
+        //             phone: '',
+        //             email: '',
+        //             numberPersons: 0,
+        //             minors: 'no',
+        //             numberMinors: 0,
+        //             typeFood: 'omnivore',
+        //             allergies: '',
+        //             hotel: 'no',
+        //             numberRooms: 0,
+        //             transport: 'no',
+        //             childcare: 'no',
+        //             formDone: false
+        //         }
+        //     )
+        // }
     }, [currentUser.formDone])
 
     const handleChange = e => {

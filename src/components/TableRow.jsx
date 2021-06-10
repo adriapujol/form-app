@@ -3,7 +3,7 @@ import axios from 'axios';
 import './TableRow.scss';
 
 
-const TableRow = ({ user, setUsers }) => {
+const TableRow = ({ user, number, setUsers }) => {
 
     const deleteUser = async () => {
         try {
@@ -20,6 +20,7 @@ const TableRow = ({ user, setUsers }) => {
 
     return (
         <tr>
+            <td>{number + 1}</td>
             <td>{user.formAnswers.fname}</td>
             <td>{user.formAnswers.lname}</td>
             <td>{user.formAnswers.address}</td>
