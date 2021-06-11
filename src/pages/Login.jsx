@@ -39,7 +39,7 @@ function Login() {
                     required
                 />
                 <input
-                    type="text"
+                    type="password"
                     className="passowrd"
                     placeholder="Password"
                     value={password}

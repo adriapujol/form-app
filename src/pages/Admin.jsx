@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Admin.scss';
 import Table from '../components/Table';
+import ToExcel from '../components/ToExcel';
 
 const Admin = () => {
 
@@ -23,7 +24,8 @@ const Admin = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div className="container admin">
+            <ToExcel users={users} />
             <Table users={users} setUsers={setUsers} />
         </div>
     )
