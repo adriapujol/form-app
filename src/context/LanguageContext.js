@@ -13,8 +13,13 @@ export function LanguageProvider({ children }) {
 
 
     // const content = {en, es, fr};
-    const [currentLanguage, setCurrentLanguage] = useState("en");
+    const defaultLanguage = window.localStorage.getItem('lang');
+    const [currentLanguage, setCurrentLanguage] = useState(defaultLanguage || "en");
     const [currentText, setCurrentText] = useState({ en, es, fr });
+
+    useEffect(() => {
+        window.localStorage.setItem('lang', currentLanguage)
+    }, [currentLanguage])
 
     // useEffect(() => {
     //     if (currentLanguage === "FR") setCurrentText(FR_text);

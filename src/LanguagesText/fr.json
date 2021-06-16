@@ -1,3 +1,7 @@
 {
+    "navLinkHome": "Accueil",
+    "navLinkForm": "Formulaire",
+    "navLinkAdmin": "Admin",
+    "navLogout": "Déconnecter",
     "test": "C'est du français"
 }

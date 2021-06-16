@@ -1,3 +1,7 @@
 {
+    "navLinkHome": "Home",
+    "navLinkForm": "Form",
+    "navLinkAdmin": "Admin",
+    "navLogout": "Logout",
     "test": "This is english"
 }

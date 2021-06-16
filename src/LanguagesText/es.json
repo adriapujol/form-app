@@ -1,3 +1,7 @@
 {
+    "navLinkHome": "Inicio",
+    "navLinkForm": "Encuesta",
+    "navLinkAdmin": "Admin",
+    "navLogout": "Cerrar sesión",
     "test": "Esto es español"
 }

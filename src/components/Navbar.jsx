@@ -10,6 +10,8 @@ const Navbar = () => {
     const { currentLanguage, setCurrentLanguage, currentText } = useLanguage();
     const [isClicked, setIsClicked] = useState(false);
 
+    const { navLinkHome, navLinkForm, navLogout } = currentText;
+
     const clickBurger = () => {
         setIsClicked(prevIsClicked => setIsClicked(!prevIsClicked));
     }
@@ -25,26 +27,24 @@ const Navbar = () => {
             </div>
             <ul className={isClicked ? "nav-links" : "nav-links hide-links"}>
                 <li>
-                    <Link to="/" onClick={clickBurger}>Home</Link>
+                    <Link to="/" onClick={clickBurger}>{navLinkHome}</Link>
                 </li>
                 <li>
-                    <Link to="/form" onClick={clickBurger}>Form</Link>
+                    <Link to="/form" onClick={clickBurger}>{navLinkForm}</Link>
                 </li>
                 {
                     currentUser.role === "admin" && <li><Link to="/admin" onClick={clickBurger}>Admin</Link></li>
                 }
                 {
-                    currentUser && <li><button onClick={logout}>Logout</button></li>
+                    currentUser && <li><button onClick={logout}>{navLogout}</button></li>
                 }
                 <li>
                     <div className="languages">
-                        <select id="languages" name="langauges" onChange={selectLanguage}>
+                        <select id="languages" name="langauges" value={currentLanguage} onChange={selectLanguage}>
                             <option value="en">EN</option>
                             <option value="fr">FR</option>
                             <option value="es">ES</option>
                         </select>
-                        {currentLanguage}
-                        {currentText.test}
                     </div>
                 </li>
             </ul>
