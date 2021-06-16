@@ -7,12 +7,16 @@ import Menu from '../components/Menu';
 import Accommodation from '../components/Accommodation';
 import { useAuth } from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 
 const Form = () => {
 
     const { currentUser, setForm } = useAuth();
     const history = useHistory();
+
+    const { currentText } = useLanguage();
+    const { formSubmitCheck, formSubmit } = currentText;
 
     const [formStep, setFormStep] = useState(0);
     const [formData, setFormData] = useState(
@@ -117,7 +121,7 @@ const Form = () => {
             case 3:
                 return <Accommodation handleChange={handleChange} formData={formData} />;
             case 4:
-                return <div>If you are ok with your answers, go ahead, submit!</div>;
+                return <div>{formSubmitCheck}</div>;
             default:
                 return <div>There are no more steps</div>
         }
@@ -140,7 +144,7 @@ const Form = () => {
                     {
                         showStep(formStep)
                     }
-                    {(formStep === 4) && <button type="submit">Submit</button>}
+                    {(formStep === 4) && <button type="submit">{formSubmit}</button>}
                 </form>
                 <div>Count {formStep}</div>
                 <div className="form-controls">
