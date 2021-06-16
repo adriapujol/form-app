@@ -73,7 +73,7 @@ const Form = () => {
 
     const postForm = async () => {
         try {
-            const response = await axios.post(`http://localhost:3001/users//form/${currentUser._id}`, formData);
+            const response = await axios.put(`http://localhost:3001/users//form/${currentUser._id}`, formData);
             console.log(response.data);
         } catch (error) {
             console.log(error.response.data.message)
