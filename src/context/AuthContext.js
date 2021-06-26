@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
 
     async function logout() {
         try {
-            const response = await axios.get('http://localhost:3001/user/logout', { withCredentials: true });
+            await axios.get('http://localhost:3001/user/logout', { withCredentials: true });
             setCurrentUser(null);
         } catch (error) {
             console.log(error);

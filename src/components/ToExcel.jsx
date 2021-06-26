@@ -4,6 +4,7 @@ import { CSVLink } from 'react-csv';
 function ToExcel({ users }) {
 
     const headers = [
+        { label: "Username", key: "username" },
         { label: "First Name", key: "fname" },
         { label: "Last Name", key: "lname" },
         { label: "Address", key: "address" },
@@ -20,7 +21,7 @@ function ToExcel({ users }) {
     ]
 
     const formReplies = users.map(user => {
-        return user.formAnswers;
+        return ({ username: user.username, ...user.formAnswers });
     });
     const data = [...formReplies];
 

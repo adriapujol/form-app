@@ -12,31 +12,14 @@ export function useLanguage() {
 export function LanguageProvider({ children }) {
 
 
-    // const content = {en, es, fr};
     const defaultLanguage = window.localStorage.getItem('lang');
     const [currentLanguage, setCurrentLanguage] = useState(defaultLanguage || "en");
-    const [currentText, setCurrentText] = useState({ en, es, fr });
+    const currentText = { en, es, fr };
 
     useEffect(() => {
         window.localStorage.setItem('lang', currentLanguage)
     }, [currentLanguage])
 
-    // useEffect(() => {
-    //     if (currentLanguage === "FR") setCurrentText(FR_text);
-    //     if (currentLanguage === "ES") setCurrentText(ES_text);
-    //     if (currentLanguage === "EN") setCurrentText(EN_text);
-
-    // }, [currentLanguage])
-    // switch (currentLanguage) {
-    //     case "ES":
-    //         setCurrentText(ES_text);
-    //         break;
-    //     case "FR":
-    //         setCurrentText(FR_text);
-    //         break;
-    //     default:
-    //         setCurrentText(EN_text);
-    // }
 
     const value = {
         currentLanguage,

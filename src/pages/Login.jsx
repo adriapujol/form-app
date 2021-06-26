@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import './Login.scss';
 import { useAuth } from '../context/AuthContext';
 
@@ -10,7 +9,6 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState("");
     const { currentUser, errorMessage, login } = useAuth();
 
 
@@ -23,7 +21,7 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true);
         login(username, password);
     }
 

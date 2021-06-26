@@ -14,7 +14,7 @@ const PersonalInfo = ({ handleChange, formData }) => {
             <label htmlFor="step1">{formPersonalInfo}</label>
 
             <label htmlFor="fname">{formFirstName}</label>
-            <input type="text" id="fname" name="fname" placeholder="Name..." value={fname} onChange={handleChange} />
+            <input type="text" id="fname" name="fname" placeholder="Name..." value={fname} onChange={handleChange} required />
 
             <label htmlFor="lname">{formLastName}</label>
             <input type="text" id="lname" name="lname" placeholder="Last Name..." value={lname} onChange={handleChange} />

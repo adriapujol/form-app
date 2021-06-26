@@ -87,6 +87,10 @@ const Form = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
+        if (formData.fname === "" || formData.lname === "" || formData.address === "" || formData.phone === ""
+            || formData.email === "") {
+            return alert("Fields empty, check all fields")
+        }
         postForm();
         // setUsers(prevUsers => [...prevUsers, formData]);
         setForm(formData);

@@ -40,7 +40,8 @@ const Table = ({ users, setUsers }) => {
         <table>
             <thead>
                 <tr>
-                    <th>nº</th>
+                    <th>num</th>
+                    <th>username</th>
                     <th>
                         <button onClick={() => requestSort("fname")}>
                             First Name
