@@ -18,11 +18,11 @@ const Companions = ({ handleChange, formData }) => {
 
             <label htmlFor="minors">{formAnyMinors}</label>
             <label htmlFor="minorsYes">
-                <input type="radio" id="minors" name="minors" value="yes" checked={minors === "yes"} onChange={handleChange} />
+                <input type="radio" id="minorsYes" name="minors" value="yes" checked={minors === "yes"} onChange={handleChange} />
                 {formYes}
             </label>
             <label htmlFor="minorsNo">
-                <input type="radio" id="minors" name="minors" value="no" checked={minors === "no"} onChange={handleChange} />
+                <input type="radio" id="minorsNo" name="minors" value="no" checked={minors === "no"} onChange={handleChange} />
                 {formNo}
             </label>
 

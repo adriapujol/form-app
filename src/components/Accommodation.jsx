@@ -15,11 +15,11 @@ const Accommodation = ({ handleChange, formData }) => {
 
             <label htmlFor="hotel">{formHelpAccommodation}</label>
             <label htmlFor="accommodationYes">
-                <input type="radio" id="hotel" name="hotel" value="yes" checked={hotel === "yes"} onChange={handleChange} />
+                <input type="radio" id="hotelYes" name="hotel" value="yes" checked={hotel === "yes"} onChange={handleChange} />
                 {formYes}
             </label>
             <label htmlFor="accommodationNo">
-                <input type="radio" id="hotel" name="hotel" value="no" checked={hotel === "no"} onChange={handleChange} />
+                <input type="radio" id="hotelNo" name="hotel" value="no" checked={hotel === "no"} onChange={handleChange} />
                 {formNo}
             </label>
 
@@ -28,21 +28,21 @@ const Accommodation = ({ handleChange, formData }) => {
 
             <label htmlFor="transport">{formNeedTransport}</label>
             <label htmlFor="transportYes">
-                <input type="radio" id="transport" name="transport" value="yes" checked={transport === "yes"} onChange={handleChange} />
+                <input type="radio" id="transportYes" name="transport" value="yes" checked={transport === "yes"} onChange={handleChange} />
                 {formYes}
             </label>
             <label htmlFor="transportNo">
-                <input type="radio" id="transport" name="transport" value="no" checked={transport === "no"} onChange={handleChange} />
+                <input type="radio" id="transportNo" name="transport" value="no" checked={transport === "no"} onChange={handleChange} />
                 {formNo}
             </label>
 
             <label htmlFor="childcare">{formChildcare}</label>
             <label htmlFor="childcareYes">
-                <input type="radio" id="childcare" name="childcare" value="yes" checked={childcare === "yes"} onChange={handleChange} />
+                <input type="radio" id="childcareYes" name="childcare" value="yes" checked={childcare === "yes"} onChange={handleChange} />
                 {formYes}
             </label>
             <label htmlFor="childcareNo">
-                <input type="radio" id="childcare" name="childcare" value="no" checked={childcare === "no"} onChange={handleChange} />
+                <input type="radio" id="childcareNo" name="childcare" value="no" checked={childcare === "no"} onChange={handleChange} />
                 {formNo}
             </label>
         </div>

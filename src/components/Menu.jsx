@@ -15,15 +15,15 @@ const Menu = ({ handleChange, formData }) => {
 
             <label htmlFor="typeFood">{formTypeFood}</label>
             <label htmlFor="omnivore">
-                <input type="radio" id="typeFood" name="typeFood" value="omnivore" checked={typeFood === "omnivore"} onChange={handleChange} />
+                <input type="radio" id="typeFoodOmn" name="typeFood" value="omnivore" checked={typeFood === "omnivore"} onChange={handleChange} />
                 {formTypeFoodOmnivore}
             </label>
             <label htmlFor="vegeterian">
-                <input type="radio" id="typeFood" name="typeFood" value="vegeterian" checked={typeFood === "vegeterian"} onChange={handleChange} />
+                <input type="radio" id="typeFoodVeg" name="typeFood" value="vegeterian" checked={typeFood === "vegeterian"} onChange={handleChange} />
                 {formTypeFoodVegeterian}
             </label>
             <label htmlFor="vegan">
-                <input type="radio" id="typeFood" name="typeFood" value="vegan" checked={typeFood === "vegan"} onChange={handleChange} />
+                <input type="radio" id="typeFoodVegan" name="typeFood" value="vegan" checked={typeFood === "vegan"} onChange={handleChange} />
                 {formTypeFoodVegan}
             </label>
 
