@@ -24,7 +24,11 @@ export function AuthProvider({ children }) {
             setLoading(false);
         } catch (error) {
             console.log(error.response.data.error);
-            setErrorMessage(error.response.data.error);
+            if (error.message === "Network Error") {
+                setErrorMessage(error.message);
+            } else {
+                setErrorMessage(error.response.data.error);
+            }
             setLoading(false);
         }
     }
@@ -35,7 +39,7 @@ export function AuthProvider({ children }) {
             setCurrentUser(null);
         } catch (error) {
             console.log(error);
-            setErrorMessage(error.response.data.error);
+            if (error.response.data.error) setErrorMessage(error.response.data.error);
         }
     }
 
@@ -52,7 +56,11 @@ export function AuthProvider({ children }) {
                 setCurrentUser(user);
                 setLoading(false);
             } catch (error) {
-                console.log(error)
+                if (error.message === "Network Error") {
+                    setErrorMessage(error.message);
+                } else {
+                    setErrorMessage(error.response.data.error);
+                }
                 setLoading(false);
             }
         }

@@ -26,9 +26,10 @@ const Admin = () => {
 
     const filterFormDone = userList => {
         let filteredList = userList;
-        const formCheck = formAnswered === "Form Answered" ? true : false;
+        // const formCheck = formAnswered === "Form Answered" ? true : false;
 
-        if (formCheck) return filteredList = userList.filter(user => user.formDone === formCheck);
+        if (formAnswered === "Form Answered") return filteredList = userList.filter(user => user.formDone === true);
+        if (formAnswered === "Form Not Answered") return filteredList = userList.filter(user => user.formDone === false);
 
         return filteredList;
     }
@@ -47,7 +48,8 @@ const Admin = () => {
             <div className="formFilter">
                 <select id="formFilter" name="formFilter" value={formAnswered} onChange={handleSelect}>
                     <option value="Form Answered">Form Answered</option>
-                    <option value="Form Not Answered" >All users</option>
+                    <option value="Form Not Answered" >Form Not Answered</option>
+                    <option value="All users">All users</option>
                 </select>
             </div>
             <Table users={formDoneFilterList} setUsers={setUsers} />
