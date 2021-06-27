@@ -37,7 +37,6 @@ const Admin = () => {
 
     const filterUserList = userList => {
         let filteredList = userList;
-        // const formCheck = formAnswered === "Form Answered" ? true : false;
 
         if (formAnswered === "Form Answered") return filteredList = userList.filter(user => user.formDone === true);
         if (formAnswered === "Form Not Answered") return filteredList = userList.filter(user => user.formDone === false);
@@ -57,7 +56,7 @@ const Admin = () => {
         <div className="container admin">
             <ToExcel users={formDoneFilterList} />
             <div className="count">
-                {userTotalFormDoneNumber}/{userTotalNumber}
+                Users Count: {userTotalFormDoneNumber}/{userTotalNumber}
             </div>
             <div className="formFilter">
                 <select id="formFilter" name="formFilter" value={formAnswered} onChange={handleSelect}>
