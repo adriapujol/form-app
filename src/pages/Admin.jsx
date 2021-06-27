@@ -8,6 +8,8 @@ const Admin = () => {
 
     const [users, setUsers] = useState([]);
     const [formAnswered, setFormAnswered] = useState("Form Answered");
+    const [userTotalNumber, setUserTotalNumber] = useState();
+    const [userTotalFormDoneNumber, setUserTotalFormDoneNumber] = useState();
 
     useEffect(() => {
         const getUsers = async () => {
@@ -15,7 +17,7 @@ const Admin = () => {
                 const response = await axios.get('http://localhost:3001/admin/users/', { withCredentials: true });
                 const filteredUsers = response.data.filter(user => user.role !== "admin");
                 setUsers(filteredUsers);
-                console.log(response.data);
+                // console.log(response.data);
 
             } catch (err) {
                 console.log(err.response);
@@ -23,8 +25,17 @@ const Admin = () => {
         }
         getUsers();
     }, []);
+    useEffect(() => {
+        if (users.length > 0) {
+            setUserTotalNumber(users.length);
+            setUserTotalFormDoneNumber(users.reduce((total, user) => {
+                if (user.formDone) { total++ };
+                return total;
+            }, 0))
+        }
+    }, [users])
 
-    const filterFormDone = userList => {
+    const filterUserList = userList => {
         let filteredList = userList;
         // const formCheck = formAnswered === "Form Answered" ? true : false;
 
@@ -34,17 +45,20 @@ const Admin = () => {
         return filteredList;
     }
 
-    let formDoneFilterList = filterFormDone(users);
+    let formDoneFilterList = filterUserList(users);
 
     const handleSelect = e => {
         e.preventDefault();
         setFormAnswered(e.target.value);
-        filterFormDone(users);
+        filterUserList(users);
     }
 
     return (
         <div className="container admin">
             <ToExcel users={formDoneFilterList} />
+            <div className="count">
+                {userTotalFormDoneNumber}/{userTotalNumber}
+            </div>
             <div className="formFilter">
                 <select id="formFilter" name="formFilter" value={formAnswered} onChange={handleSelect}>
                     <option value="Form Answered">Form Answered</option>

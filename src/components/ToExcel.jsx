@@ -25,7 +25,7 @@ function ToExcel({ users }) {
     });
     const data = [...formReplies];
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <CSVLink
