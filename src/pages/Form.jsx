@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Form.scss';
 import PersonalInfo from '../components/PersonalInfo';
 import Companions from '../components/Companions';
 import Menu from '../components/Menu';
 import Accommodation from '../components/Accommodation';
+import { useAuth } from '../context/AuthContext';
+import { useHistory } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 
-const Form = ({ setUsers }) => {
+const Form = () => {
+
+    const { currentUser, setForm } = useAuth();
+    const history = useHistory();
+
+    const { currentText } = useLanguage();
+    const { formSubmitCheck, formSubmit } = currentText;
 
     const [formStep, setFormStep] = useState(0);
     const [formData, setFormData] = useState(
@@ -30,6 +39,11 @@ const Form = ({ setUsers }) => {
         }
     )
 
+    useEffect(() => {
+        if (currentUser.formDone) {
+            setFormData(prevFormData => prevFormData = currentUser.formAnswers);
+        }
+    }, [currentUser.formDone, currentUser.formAnswers])
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -41,11 +55,8 @@ const Form = ({ setUsers }) => {
     }
 
     const postForm = async () => {
-
-
-
         try {
-            const response = await axios.post('http://localhost:3001/users/add', formData);
+            const response = await axios.put(`http://localhost:3001/users//form/${currentUser._id}`, formData);
             console.log(response.data);
         } catch (error) {
             console.log(error.response.data.message)
@@ -55,24 +66,30 @@ const Form = ({ setUsers }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
+        if (formData.fname === "" || formData.lname === "" || formData.address === "" || formData.phone === ""
+            || formData.email === "") {
+            return alert("Fields empty, check all fields")
+        }
         postForm();
-        setUsers(prevUsers => [...prevUsers, formData]);
-        setFormData({
-            fname: '',
-            lname: '',
-            address: '',
-            phone: '',
-            email: '',
-            numberPersons: 0,
-            numberMinors: 0,
-            typeFood: 'omnivore',
-            allergies: '',
-            hotel: 'no',
-            numberRooms: 0,
-            transport: 'no',
-            childcare: 'no',
-        })
+        // setUsers(prevUsers => [...prevUsers, formData]);
+        setForm(formData);
+        // setFormData({
+        //     fname: '',
+        //     lname: '',
+        //     address: '',
+        //     phone: '',
+        //     email: '',
+        //     numberPersons: 0,
+        //     numberMinors: 0,
+        //     typeFood: 'omnivore',
+        //     allergies: '',
+        //     hotel: 'no',
+        //     numberRooms: 0,
+        //     transport: 'no',
+        //     childcare: 'no',
+        // })
         setFormStep(0);
+        history.push("/");
         alert("SUBMIT");
     }
 
@@ -87,7 +104,7 @@ const Form = ({ setUsers }) => {
             case 3:
                 return <Accommodation handleChange={handleChange} formData={formData} />;
             case 4:
-                return <div>If you are ok with your answers, go ahead, submit!</div>;
+                return <div>{formSubmitCheck}</div>;
             default:
                 return <div>There are no more steps</div>
         }
@@ -110,7 +127,7 @@ const Form = ({ setUsers }) => {
                     {
                         showStep(formStep)
                     }
-                    {(formStep === 4) && <button type="submit">Submit</button>}
+                    {(formStep === 4) && <button type="submit">{formSubmit}</button>}
                 </form>
                 <div>Count {formStep}</div>
                 <div className="form-controls">

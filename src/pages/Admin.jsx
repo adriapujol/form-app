@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Admin.scss';
 import Table from '../components/Table';
+import ToExcel from '../components/ToExcel';
 
 const Admin = () => {
 
     const [users, setUsers] = useState([]);
+    const [formAnswered, setFormAnswered] = useState("Form Answered");
+    const [userTotalNumber, setUserTotalNumber] = useState();
+    const [userTotalFormDoneNumber, setUserTotalFormDoneNumber] = useState();
 
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/users/');
-                setUsers(response.data);
-                console.log(response.data);
+                const response = await axios.get('http://localhost:3001/admin/users/', { withCredentials: true });
+                const filteredUsers = response.data.filter(user => user.role !== "admin");
+                setUsers(filteredUsers);
+                // console.log(response.data);
 
             } catch (err) {
                 console.log(err.response);
@@ -20,10 +25,47 @@ const Admin = () => {
         }
         getUsers();
     }, []);
+    useEffect(() => {
+        if (users.length > 0) {
+            setUserTotalNumber(users.length);
+            setUserTotalFormDoneNumber(users.reduce((total, user) => {
+                if (user.formDone) { total++ };
+                return total;
+            }, 0))
+        }
+    }, [users])
+
+    const filterUserList = userList => {
+        let filteredList = userList;
+
+        if (formAnswered === "Form Answered") return filteredList = userList.filter(user => user.formDone === true);
+        if (formAnswered === "Form Not Answered") return filteredList = userList.filter(user => user.formDone === false);
+
+        return filteredList;
+    }
+
+    let formDoneFilterList = filterUserList(users);
+
+    const handleSelect = e => {
+        e.preventDefault();
+        setFormAnswered(e.target.value);
+        filterUserList(users);
+    }
 
     return (
-        <div>
-            <Table users={users} setUsers={setUsers} />
+        <div className="container admin">
+            <ToExcel users={formDoneFilterList} />
+            <div className="count">
+                Users Count: {userTotalFormDoneNumber}/{userTotalNumber}
+            </div>
+            <div className="formFilter">
+                <select id="formFilter" name="formFilter" value={formAnswered} onChange={handleSelect}>
+                    <option value="Form Answered">Form Answered</option>
+                    <option value="Form Not Answered" >Form Not Answered</option>
+                    <option value="All users">All users</option>
+                </select>
+            </div>
+            <Table users={formDoneFilterList} setUsers={setUsers} />
         </div>
     )
 }
