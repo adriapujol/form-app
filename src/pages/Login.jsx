@@ -23,6 +23,7 @@ function Login() {
         e.preventDefault();
         setLoading(true);
         login(username, password);
+        setLoading(false);
     }
 
     return (

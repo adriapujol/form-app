@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Admin.scss';
 import Table from '../components/Table';
 import ToExcel from '../components/ToExcel';
+import Register from '../components/Register';
 
 const Admin = () => {
 
@@ -54,6 +55,7 @@ const Admin = () => {
 
     return (
         <div className="container admin">
+            <Register></Register>
             <ToExcel users={formDoneFilterList} />
             <div className="count">
                 Users Count: {userTotalFormDoneNumber}/{userTotalNumber}

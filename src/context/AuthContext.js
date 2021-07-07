@@ -13,9 +13,25 @@ export function AuthProvider({ children }) {
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(true);
 
+
+    async function register(username, password, role) {
+        const userInfo = { username: username, password: password, role: role };
+        try {
+            const response = await axios.post('http://localhost:3001/user/register', userInfo, { withCredentials: true });
+            const user = response.data;
+            console.log(user);
+        } catch (error) {
+            if (error.message === "Network Error") {
+                setErrorMessage(error.message);
+            } else {
+                setErrorMessage(error.response.data.error);
+            }
+        }
+    }
+
     async function login(username, password) {
 
-        const userInfo = { username: username, password: password }
+        const userInfo = { username: username, password: password };
         try {
             const response = await axios.post('http://localhost:3001/user/login', userInfo, { withCredentials: true });
             const user = response.data;
@@ -59,7 +75,8 @@ export function AuthProvider({ children }) {
                 if (error.message === "Network Error") {
                     setErrorMessage(error.message);
                 } else {
-                    setErrorMessage(error.response.data.error);
+                    // console.log("this fired fired");
+                    // setErrorMessage(error.response.data.error);
                 }
                 setLoading(false);
             }
@@ -73,6 +90,7 @@ export function AuthProvider({ children }) {
         currentUser,
         errorMessage,
         setForm,
+        register,
         login,
         logout
     }
