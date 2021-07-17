@@ -131,10 +131,57 @@ const Form2 = () => {
 
         setFormData(prevData => ({
             ...prevData,
-            children: {
+            children: [
                 ...children
-            }
+            ]
         }))
+    }
+
+    const handleAddChild = e => {
+        e.preventDefault();
+        setTotalChildren(prevTotalChildren => {
+            if (totalChildren < 4) {
+                return prevTotalChildren + 1;
+            } else {
+                return 4;
+            }
+        })
+    }
+
+    const handleDeleteChild = e => {
+        e.preventDefault();
+        setTotalChildren(prevTotalChildren => {
+            if (totalChildren > 0) {
+
+                const childToDelete = prevTotalChildren - 1;
+                const children = formData.children;
+
+
+                console.log("child to delete", children[childToDelete])
+
+                children[childToDelete] = {
+                    ...children[childToDelete],
+                    fname: "",
+                    lname: "",
+                    age: 0,
+                    typeFood: "meat",
+                    allergies: ""
+                }
+
+
+                setFormData(prevData => ({
+                    ...prevData,
+                    children: [
+                        ...children
+                    ]
+                }))
+
+                return childToDelete - 1;
+
+            } else {
+                return 0;
+            }
+        })
     }
 
     const handleShowField = e => {
@@ -222,8 +269,14 @@ const Form2 = () => {
                             <button name="childrenInfo" onClick={handleShowField}>+</button>
                         </label>
                         {
-                            showChildrenInfo && formData.children.map((child, index) => <ChildForm totalChildren={totalChildren} child={child} key={index} handleChildrenChange={handleChildrenChange} />)
-
+                            showChildrenInfo &&
+                            <>
+                                {
+                                    formData.children.map((child, index) => <ChildForm totalChildren={totalChildren} child={child} index={index} key={index} handleChildrenChange={handleChildrenChange} />)
+                                }
+                                <button onClick={handleDeleteChild}>Delete Child</button>
+                                <button onClick={handleAddChild}>Add Child</button>
+                            </>
                         }
                     </div>
 
