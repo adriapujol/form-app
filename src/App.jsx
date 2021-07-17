@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './App.scss';
 import Form from './pages/Form';
+import Form2 from './pages/Form2';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Main from './pages/Main';
@@ -35,6 +36,10 @@ function App() {
                     <PrivateRoute adminOnly={false} exact path="/form" >
                         <Navbar />
                         <Form />
+                    </PrivateRoute>
+                    <PrivateRoute adminOnly={false} exact path="/form2" >
+                        <Navbar />
+                        <Form2 />
                     </PrivateRoute>
                     <PublicRoute restricted={true} path="/login">
                         <Login />
