@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Form.scss';
-import PersonalInfo from '../components/PersonalInfo';
-import Companions from '../components/Companions';
-import Menu from '../components/Menu';
-import Accommodation from '../components/Accommodation';
 import ChildForm from '../components/ChildForm';
 import { useAuth } from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
@@ -21,8 +17,11 @@ const Form2 = () => {
 
     const [formStep, setFormStep] = useState(0);
     const [totalChildren, setTotalChildren] = useState(0);
-    const [showContactInfo, setShowContactInfo] = useState(false);
+
+    const [showPersonalInfo, setShowPersonalInfo] = useState(true);
+    const [showPlusOneInfo, setShowPlusOneInfo] = useState(false);
     const [showChildrenInfo, setShowChildrenInfo] = useState(false);
+
     const [plusOne, setPlusOne] = useState("false");
     const [formData, setFormData] = useState(
         {
@@ -188,7 +187,8 @@ const Form2 = () => {
         e.preventDefault();
         const name = e.target.name;
 
-        if (name === "contactInfo") setShowContactInfo(prevShowContactInfo => !prevShowContactInfo);
+        if (name === "personalInfo") setShowPersonalInfo(prevShowPersonalInfo => !prevShowPersonalInfo);
+        if (name === "plusOneInfo") setShowPlusOneInfo(prevShowPlusOneInfo => !prevShowPlusOneInfo);
         if (name === "childrenInfo") setShowChildrenInfo(prevShowChildrenInfo => !prevShowChildrenInfo);
     }
 
@@ -222,37 +222,20 @@ const Form2 = () => {
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="step1">Personal Info</label>
-
-                        <label htmlFor="fname">First Name</label>
-                        <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.fname} onChange={handleChange} required />
-
-                        <label htmlFor="lname">Last Name</label>
-                        <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.lname} onChange={handleChange} />
-
-                        <label htmlFor="plusOne">Plus one ?
-                            <input type="checkbox" id="plusOneYes" name="plusOne" value="true" onChange={handlePlusOne} />
+                        <label htmlFor="step1">Personal Info
+                            <button name="personalInfo" onClick={handleShowField}>+</button>
                         </label>
-
                         {
-                            plusOne === "true" &&
+                            showPersonalInfo &&
+
                             <>
-                                <label htmlFor="fname">First Name</label>
-                                <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.plusOne.fname} onChange={handlePlusOneChange} required />
+
+                                < label htmlFor="fname">First Name</label>
+                                <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.fname} onChange={handleChange} required />
 
                                 <label htmlFor="lname">Last Name</label>
-                                <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.plusOne.lname} onChange={handlePlusOneChange} />
-                            </>
-                        }
+                                <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.lname} onChange={handleChange} />
 
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="step2">Contact Info
-                            <button name="contactInfo" onClick={handleShowField}>+</button>
-                        </label>
-                        {
-                            showContactInfo &&
-                            <>
                                 <label htmlFor="address">Address</label>
                                 <input type="text" id="address" name="address" placeholder="Address..." value={formData.address} onChange={handleChange} />
 
@@ -261,9 +244,63 @@ const Form2 = () => {
 
                                 <label htmlFor="email">Email</label>
                                 <input type="email" id="email" name="email" placeholder="Email..." value={formData.email} onChange={handleChange} />
+
+                                <label htmlFor="typeFood">Type of food</label>
+                                <label htmlFor="omnivore">
+                                    <input type="radio" name="typeFood" value="omnivore" checked={formData.typeFood === "omnivore"} onChange={handleChange} />
+                                    Omnivore
+                                </label>
+                                <label htmlFor="vegeterian">
+                                    <input type="radio" name="typeFood" value="vegeterian" checked={formData.typeFood === "vegeterian"} onChange={handleChange} />
+                                    Vegeterian
+                                </label>
+                                <label htmlFor="vegan">
+                                    <input type="radio" name="typeFood" value="vegan" checked={formData.typeFood === "vegan"} onChange={handleChange} />
+                                    Vegan
+                                </label>
+
+                                <label htmlFor="allergies">Allergies</label>
+                                <input type="text" name="allergies" placeholder="Type any allergies" value={formData.allergies} onChange={handleChange} />
                             </>
                         }
+
+
                     </div>
+
+                    {
+
+                        <div className="form-group">
+                            <label htmlFor="plusOne">Plus one ?
+                                <button name="plusOneInfo" onClick={handleShowField}>+</button>
+                            </label>
+                            {showPlusOneInfo &&
+                                <>
+                                    <label htmlFor="fname">First Name</label>
+                                    <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.plusOne.fname} onChange={handlePlusOneChange} required />
+
+                                    <label htmlFor="lname">Last Name</label>
+                                    <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.plusOne.lname} onChange={handlePlusOneChange} />
+
+
+                                    <label htmlFor="typeFood">Type of food</label>
+                                    <label htmlFor="omnivore">
+                                        <input type="radio" name="typeFood" value="omnivore" checked={formData.plusOne.typeFood === "omnivore"} onChange={handlePlusOneChange} />
+                                        Omnivore
+                                    </label>
+                                    <label htmlFor="vegeterian">
+                                        <input type="radio" name="typeFood" value="vegeterian" checked={formData.plusOne.typeFood === "vegeterian"} onChange={handlePlusOneChange} />
+                                        Vegeterian
+                                    </label>
+                                    <label htmlFor="vegan">
+                                        <input type="radio" name="typeFood" value="vegan" checked={formData.plusOne.typeFood === "vegan"} onChange={handlePlusOneChange} />
+                                        Vegan
+                                    </label>
+
+                                    <label htmlFor="allergies">Allergies</label>
+                                    <input type="text" name="allergies" placeholder="Type any allergies" value={formData.plusOne.allergies} onChange={handleChildrenChange} />
+                                </>}
+                        </div>
+                    }
                     <div className="form-group">
                         <label htmlFor="step3">Children
                             <button name="childrenInfo" onClick={handleShowField}>+</button>
