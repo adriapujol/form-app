@@ -2,8 +2,7 @@ import React from 'react';
 
 
 function ChildForm({ totalChildren, child, index, handleChildrenChange }) {
-    console.log("total Children", totalChildren)
-    console.log(index);
+
     return (
         <>
             {

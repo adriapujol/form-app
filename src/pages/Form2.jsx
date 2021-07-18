@@ -15,7 +15,6 @@ const Form2 = () => {
     const { currentText } = useLanguage();
     const { formSubmitCheck, formSubmit } = currentText;
 
-    const [formStep, setFormStep] = useState(0);
     const [totalChildren, setTotalChildren] = useState(0);
 
     const [showPersonalInfo, setShowPersonalInfo] = useState(true);
@@ -28,6 +27,8 @@ const Form2 = () => {
             fname: "",
             lname: "",
             address: "",
+            cp: 0,
+            city: "",
             phone: "",
             email: "",
             typeFood: "meat",
@@ -76,12 +77,6 @@ const Form2 = () => {
     )
 
     useEffect(() => {
-        if (currentUser) {
-            setFormData(prevFormData => prevFormData = currentUser.formAnswers);
-            console.log("First effect")
-        }
-    }, [])
-    useEffect(() => {
         setTotalChildren(
             formData.children.reduce((total, child) => {
                 if (child.fname !== "") total++;
@@ -96,10 +91,6 @@ const Form2 = () => {
         }
     }, [currentUser.formDone, currentUser.formAnswers])
 
-    const handlePlusOne = () => {
-        plusOne === "false" ? setPlusOne("true") : setPlusOne("false");
-
-    }
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -155,9 +146,6 @@ const Form2 = () => {
                 const childToDelete = prevTotalChildren - 1;
                 const children = formData.children;
 
-
-                console.log("child to delete", children[childToDelete])
-
                 children[childToDelete] = {
                     ...children[childToDelete],
                     fname: "",
@@ -194,26 +182,31 @@ const Form2 = () => {
 
     const postForm = async () => {
         console.log("SUBMIT")
-        // try {
-        //     const response = await axios.put(`http://localhost:3001/users//form/${currentUser._id}`, formData);
-        //     console.log(response.data);
-        // } catch (error) {
-        //     console.log(error.response.data.message)
-        // }
+        try {
+            const response = await axios.put(`http://localhost:3001/users//form/${currentUser._id}`, formData);
+            console.log(response.data);
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
     }
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        // if (formData.fname === "" || formData.lname === "" || formData.address === "" || formData.phone === ""
-        //     || formData.email === "") {
-        //     return alert("Fields empty, check all fields")
-        // }
-        // postForm();
-        // setForm(formData);
-        // setFormStep(0);
-        // history.push("/");
-        // alert("SUBMIT");
+        console.log(formData);
+        setShowChildrenInfo(false);
+        setShowPersonalInfo(false);
+        setShowPlusOneInfo(false);
+
+        if (formData.fname === "" || formData.lname === "" || formData.address === "" || formData.phone === ""
+            || formData.email === "") {
+            return alert("Fields empty, check all fields")
+        } else {
+            postForm();
+            setForm(formData);
+
+            alert("SUBMIT");
+        }
     }
 
 
@@ -234,16 +227,22 @@ const Form2 = () => {
                                 <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.fname} onChange={handleChange} required />
 
                                 <label htmlFor="lname">Last Name</label>
-                                <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.lname} onChange={handleChange} />
+                                <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.lname} onChange={handleChange} required />
 
                                 <label htmlFor="address">Address</label>
-                                <input type="text" id="address" name="address" placeholder="Address..." value={formData.address} onChange={handleChange} />
+                                <input type="text" id="address" name="address" placeholder="Address..." value={formData.address} onChange={handleChange} required />
+
+                                <label htmlFor="cp">Postal Code</label>
+                                <input type="text" id="cp" name="cp" placeholder="CP..." value={formData.cp} onChange={handleChange} required />
+
+                                <label htmlFor="city">City</label>
+                                <input type="text" id="city" name="city" placeholder="City..." value={formData.city} onChange={handleChange} required />
 
                                 <label htmlFor="phone">Phone</label>
                                 <input type="text" id="phone" name="phone" placeholder="Phone..." value={formData.phone} onChange={handleChange} />
 
                                 <label htmlFor="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Email..." value={formData.email} onChange={handleChange} />
+                                <input type="email" id="email" name="email" placeholder="Email..." value={formData.email} onChange={handleChange} required />
 
                                 <label htmlFor="typeFood">Type of food</label>
                                 <label htmlFor="omnivore">
@@ -316,7 +315,7 @@ const Form2 = () => {
                             </>
                         }
                     </div>
-
+                    <button type="submit">Submit</button>
                 </form>
             </div >
         </div >
