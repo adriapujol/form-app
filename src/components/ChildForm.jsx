@@ -17,18 +17,22 @@ function ChildForm({ totalChildren, child, index, handleChildrenChange }) {
                     <label htmlFor="age">Age</label>
                     <input type="number" min="0" max="18" step="1" data-child={index} name="age" placeholder="Age..." value={child.age} onChange={handleChildrenChange} />
 
-                    <label htmlFor="typeFood">Type of food</label>
-                    <label htmlFor="omnivore">
-                        <input type="radio" data-child={index} name="typeFood" value="omnivore" checked={child.typeFood === "omnivore"} onChange={handleChildrenChange} />
-                        Omnivore
+                    <label htmlFor={`typeFood-${index}`}>Type of food</label>
+                    <label htmlFor="meat">
+                        <input type="radio" data-child={index} name={`typeFood-${index}`} value="meat" checked={child.typeFood === "meat"} onChange={handleChildrenChange} />
+                        Meat
                     </label>
-                    <label htmlFor="vegeterian">
-                        <input type="radio" data-child={index} name="typeFood" value="vegeterian" checked={child.typeFood === "vegeterian"} onChange={handleChildrenChange} />
-                        Vegeterian
+                    <label htmlFor="fish">
+                        <input type="radio" data-child={index} name={`typeFood-${index}`} value="fish" checked={child.typeFood === "fish"} onChange={handleChildrenChange} />
+                        Fish
                     </label>
-                    <label htmlFor="vegan">
-                        <input type="radio" data-child={index} name="typeFood" value="vegan" checked={child.typeFood === "vegan"} onChange={handleChildrenChange} />
-                        Vegan
+                    <label htmlFor="eggs">
+                        <input type="radio" data-child={index} name={`typeFood-${index}`} value="eggs" checked={child.typeFood === "eggs"} onChange={handleChildrenChange} />
+                        Eggs
+                    </label>
+                    <label htmlFor="plant">
+                        <input type="radio" data-child={index} name={`typeFood-${index}`} value="plant" checked={child.typeFood === "plant"} onChange={handleChildrenChange} />
+                        Plant
                     </label>
 
                     <label htmlFor="allergies">Allergies</label>

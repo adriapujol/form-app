@@ -20,6 +20,8 @@ const Form2 = () => {
     const [showPersonalInfo, setShowPersonalInfo] = useState(true);
     const [showPlusOneInfo, setShowPlusOneInfo] = useState(false);
     const [showChildrenInfo, setShowChildrenInfo] = useState(false);
+    const [showAccommodationInfo, setShowAccommodationInfo] = useState(false);
+
 
     const [plusOne, setPlusOne] = useState("false");
     const [formData, setFormData] = useState(
@@ -27,16 +29,16 @@ const Form2 = () => {
             fname: "",
             lname: "",
             address: "",
-            cp: 0,
+            cp: "",
             city: "",
             phone: "",
             email: "",
-            typeFood: "meat",
+            typeFood: "not selected",
             allergies: "",
             plusOne: {
                 fname: "",
                 lname: "",
-                typeFood: "meat",
+                typeFood: "not selected",
                 allergies: ""
 
             },
@@ -45,28 +47,28 @@ const Form2 = () => {
                     fname: "",
                     lname: "",
                     age: 0,
-                    typeFood: "meat",
+                    typeFood: "not selected",
                     allergies: ""
                 },
                 {
                     fname: "",
                     lname: "",
                     age: 0,
-                    typeFood: "meat",
+                    typeFood: "not selected",
                     allergies: ""
                 },
                 {
                     fname: "",
                     lname: "",
                     age: 0,
-                    typeFood: "meat",
+                    typeFood: "not selected",
                     allergies: ""
                 },
                 {
                     fname: "",
                     lname: "",
                     age: 0,
-                    typeFood: "meat",
+                    typeFood: "not selected",
                     allergies: ""
                 }
             ],
@@ -76,20 +78,32 @@ const Form2 = () => {
         }
     )
 
-    useEffect(() => {
-        setTotalChildren(
-            formData.children.reduce((total, child) => {
-                if (child.fname !== "") total++;
-                return total;
-            }, 0)
-        );
-    }, [formData.children])
+
     useEffect(() => {
         if (currentUser.formDone) {
+            console.log("Fired Update Form")
             setFormData(prevFormData => prevFormData = currentUser.formAnswers);
             console.log("update effect")
+
+            setTotalChildren(
+                currentUser.formAnswers.children.reduce((total, child) => {
+                    if (child.fname !== "" || child.lname !== "" || child.age > 0 || child.allergies !== "") total++;
+                    return total;
+                }, 0)
+            );
+
+
         }
     }, [currentUser.formDone, currentUser.formAnswers])
+    // useEffect(() => {
+    //     console.log("Fired Children Number")
+    //     setTotalChildren(
+    //         formData.children.reduce((total, child) => {
+    //             if (child.fname !== "" || child.lname !== "" || child.age > 0 || child.allergies !== "") total++;
+    //             return total;
+    //         }, 0)
+    //     );
+    // }, [formData.children])
 
 
     const handleChange = e => {
@@ -102,7 +116,11 @@ const Form2 = () => {
     }
 
     const handlePlusOneChange = e => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
+
+        if (name === "typeFoodPlusOne") {
+            name = "typeFood"
+        }
         setFormData(prevData => ({
             ...prevData,
             plusOne: {
@@ -113,10 +131,13 @@ const Form2 = () => {
     }
 
     const handleChildrenChange = e => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
         const childNumber = parseInt(e.target.getAttribute("data-child"));
         const children = formData.children;
 
+        if (name.startsWith("typeFood")) {
+            name = "typeFood"
+        }
         children[childNumber][name] = value;
 
         setFormData(prevData => ({
@@ -151,7 +172,7 @@ const Form2 = () => {
                     fname: "",
                     lname: "",
                     age: 0,
-                    typeFood: "meat",
+                    typeFood: "not selected",
                     allergies: ""
                 }
 
@@ -163,7 +184,7 @@ const Form2 = () => {
                     ]
                 }))
 
-                return childToDelete - 1;
+                return childToDelete;
 
             } else {
                 return 0;
@@ -178,6 +199,7 @@ const Form2 = () => {
         if (name === "personalInfo") setShowPersonalInfo(prevShowPersonalInfo => !prevShowPersonalInfo);
         if (name === "plusOneInfo") setShowPlusOneInfo(prevShowPlusOneInfo => !prevShowPlusOneInfo);
         if (name === "childrenInfo") setShowChildrenInfo(prevShowChildrenInfo => !prevShowChildrenInfo);
+        if (name === "accommodationInfo") setShowAccommodationInfo(prevShowAccommodationInfo => !prevShowAccommodationInfo);
     }
 
     const postForm = async () => {
@@ -245,17 +267,21 @@ const Form2 = () => {
                                 <input type="email" id="email" name="email" placeholder="Email..." value={formData.email} onChange={handleChange} required />
 
                                 <label htmlFor="typeFood">Type of food</label>
-                                <label htmlFor="omnivore">
-                                    <input type="radio" name="typeFood" value="omnivore" checked={formData.typeFood === "omnivore"} onChange={handleChange} />
-                                    Omnivore
+                                <label htmlFor="meat">
+                                    <input type="radio" name="typeFood" value="meat" checked={formData.typeFood === "meat"} onChange={handleChange} />
+                                    Meat
                                 </label>
-                                <label htmlFor="vegeterian">
-                                    <input type="radio" name="typeFood" value="vegeterian" checked={formData.typeFood === "vegeterian"} onChange={handleChange} />
-                                    Vegeterian
+                                <label htmlFor="fish">
+                                    <input type="radio" name="typeFood" value="fish" checked={formData.typeFood === "fish"} onChange={handleChange} />
+                                    Fish
                                 </label>
-                                <label htmlFor="vegan">
-                                    <input type="radio" name="typeFood" value="vegan" checked={formData.typeFood === "vegan"} onChange={handleChange} />
-                                    Vegan
+                                <label htmlFor="eggs">
+                                    <input type="radio" name="typeFood" value="eggs" checked={formData.typeFood === "eggs"} onChange={handleChange} />
+                                    Eggs
+                                </label>
+                                <label htmlFor="plant">
+                                    <input type="radio" name="typeFood" value="plant" checked={formData.typeFood === "plant"} onChange={handleChange} />
+                                    Plant
                                 </label>
 
                                 <label htmlFor="allergies">Allergies</label>
@@ -269,7 +295,7 @@ const Form2 = () => {
                     {
 
                         <div className="form-group">
-                            <label htmlFor="plusOne">Plus one ?
+                            <label htmlFor="step2">Plus one ?
                                 <button name="plusOneInfo" onClick={handleShowField}>+</button>
                             </label>
                             {showPlusOneInfo &&
@@ -281,22 +307,26 @@ const Form2 = () => {
                                     <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.plusOne.lname} onChange={handlePlusOneChange} />
 
 
-                                    <label htmlFor="typeFood">Type of food</label>
-                                    <label htmlFor="omnivore">
-                                        <input type="radio" name="typeFood" value="omnivore" checked={formData.plusOne.typeFood === "omnivore"} onChange={handlePlusOneChange} />
-                                        Omnivore
+                                    <label htmlFor="typeFoodPlusOne">Type of food</label>
+                                    <label htmlFor="meat">
+                                        <input type="radio" name="typeFoodPlusOne" value="meat" checked={formData.plusOne.typeFood === "meat"} onChange={handlePlusOneChange} />
+                                        Meat
                                     </label>
-                                    <label htmlFor="vegeterian">
-                                        <input type="radio" name="typeFood" value="vegeterian" checked={formData.plusOne.typeFood === "vegeterian"} onChange={handlePlusOneChange} />
-                                        Vegeterian
+                                    <label htmlFor="fish">
+                                        <input type="radio" name="typeFoodPlusOne" value="fish" checked={formData.plusOne.typeFood === "fish"} onChange={handlePlusOneChange} />
+                                        Fish
                                     </label>
-                                    <label htmlFor="vegan">
-                                        <input type="radio" name="typeFood" value="vegan" checked={formData.plusOne.typeFood === "vegan"} onChange={handlePlusOneChange} />
-                                        Vegan
+                                    <label htmlFor="eggs">
+                                        <input type="radio" name="typeFoodPlusOne" value="eggs" checked={formData.plusOne.typeFood === "eggs"} onChange={handlePlusOneChange} />
+                                        Eggs
+                                    </label>
+                                    <label htmlFor="plant">
+                                        <input type="radio" name="typeFoodPlusOne" value="plant" checked={formData.plusOne.typeFood === "plant"} onChange={handlePlusOneChange} />
+                                        Plant
                                     </label>
 
                                     <label htmlFor="allergies">Allergies</label>
-                                    <input type="text" name="allergies" placeholder="Type any allergies" value={formData.plusOne.allergies} onChange={handleChildrenChange} />
+                                    <input type="text" name="allergies" placeholder="Type any allergies" value={formData.plusOne.allergies} onChange={handlePlusOneChange} />
                                 </>}
                         </div>
                     }
@@ -312,6 +342,36 @@ const Form2 = () => {
                                 }
                                 <button onClick={handleDeleteChild}>Delete Child</button>
                                 <button onClick={handleAddChild}>Add Child</button>
+                            </>
+                        }
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="step4">Accomodation/Transport
+                            <button name="accommodationInfo" onClick={handleShowField}>+</button>
+                        </label>
+                        {
+                            showAccommodationInfo &&
+
+                            <>
+                                <label htmlFor="hotel">Would you be interested in help with searching for an hotel?</label>
+                                <label htmlFor="accommodationYes">
+                                    <input type="radio" id="hotelYes" name="hotel" value="yes" checked={formData.hotel === "yes"} onChange={handleChange} />
+                                    yes
+                                </label>
+                                <label htmlFor="accommodationNo">
+                                    <input type="radio" id="hotelNo" name="hotel" value="no" checked={formData.hotel === "no"} onChange={handleChange} />
+                                    no
+                                </label>
+
+                                <label htmlFor="transport">If you said yes to the previous question. Would you be interested in tranposrtation the day of the wedding? (hotel/church/wedding reception/hotel)</label>
+                                <label htmlFor="transportYes">
+                                    <input type="radio" id="transportYes" name="transport" value="yes" checked={formData.transport === "yes"} onChange={handleChange} />
+                                    yes
+                                </label>
+                                <label htmlFor="transportNo">
+                                    <input type="radio" id="transportNo" name="transport" value="no" checked={formData.transport === "no"} onChange={handleChange} />
+                                    no
+                                </label>
                             </>
                         }
                     </div>
