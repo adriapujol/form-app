@@ -1,3 +1,5 @@
+@import '../colors.scss';
+
 .login-card {
     
     position: relative;
@@ -10,6 +12,7 @@
         height: auto;
         width: 90%;
         max-width: 500px;
+        pointer-events: none;
     }
     .top-right-frame {
         position: absolute;
@@ -35,23 +38,32 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+
             // background-color: skyblue;
             margin-top: 1.5em;
-            margin-left: 1.5em;
+            margin-left: 2em;
 
             :nth-child(1) {
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
             :nth-child(2) {
-                font-size: 1.8em;
-                margin-left: -0.3em;
+                font-size: 2em;
+                margin-left: -0.15em;
             }
             :nth-child(3) {
-                font-size: 1.2em;
+                font-size: 1.4em;
+                margin-left: -0.15em;
             }
             :nth-child(4) {
-                font-size: 1.2em;
+                font-size: 1.4em;
+                margin-left: -0.15em;
+
             }
+
+            p {
+                font-family: 'Dancing Script', cursive;
+            }
+
         }
 
         .form-wrapper {
@@ -60,7 +72,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            margin-right: 1.5em;
+            margin-right: 2em;
+            margin-bottom: 1.5em;
             // background-color: slateblue;
 
             .login-form {
@@ -68,6 +81,24 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+
+                input {
+                    background-color: $light_grey;
+                    border: none;
+                    border-bottom: 1px solid $main_green;
+                    text-align: center;
+                    padding: 4px;
+                    margin-bottom: 5px;
+                }
+
+                .login-btn {
+                    width: 100%;
+                    padding: 4px;
+                    border: none;
+                    cursor: pointer;
+                    background-color: $main_yellow;
+
+                }
             }
         }
     }
