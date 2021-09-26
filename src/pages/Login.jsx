@@ -46,7 +46,7 @@ function Login() {
                         <form className="login-form" onSubmit={handleSubmit}>
                             <input
                                 type="text"
-                                className="username"
+                                className="login-input username"
                                 placeholder="Username"
                                 value={username}
                                 onChange={usernameChange}
@@ -54,7 +54,7 @@ function Login() {
                             />
                             <input
                                 type="password"
-                                className="passowrd"
+                                className="login-input passowrd"
                                 placeholder="Password"
                                 value={password}
                                 onChange={passwordChange}
