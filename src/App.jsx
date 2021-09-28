@@ -26,7 +26,7 @@ function App() {
             <div className="App">
                 <Switch>
                     <PrivateRoute adminOnly={false} exact path={["/", "/main"]} >
-                        <Navbar />
+                        {/* <Navbar /> */}
                         <Main />
                     </PrivateRoute>
                     <PrivateRoute adminOnly={true} exact path="/admin" >
