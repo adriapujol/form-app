@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './App.scss';
-import Form from './pages/Form';
-import Form2 from './pages/Form2';
+import Form from './pages/Form_old';
+import Form2 from './components/Form';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Main from './pages/Main';

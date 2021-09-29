@@ -3,7 +3,9 @@
 .main-wrapper {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     min-height: 100vh;
     height: 100%;
@@ -83,7 +85,7 @@
 
 
     .jennifer-carlos {
-        position: absolute;
+        position: relative;
         width: 100%;
         height: auto;
         bottom: 0;

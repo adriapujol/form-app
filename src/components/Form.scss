@@ -1,0 +1,49 @@
+@import '../colors.scss';
+
+.form-container {
+    
+    // background-color: lightblue;
+    // border: 2px solid green;
+    margin: 20px 0px;
+    width: 100%;
+    // min-width: 450px;
+    // min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+    form {
+        width: 80%;
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .form-group {
+            
+            display: flex;
+            flex-direction: column;
+            border: 2px solid $main_yellow;
+            margin-bottom: 5px;
+            // width: 100%;
+            // justify-content: center;
+            align-items: center;
+
+            // min-height: 300px;
+
+            .field-title {
+                
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                padding: 5px 10px;
+            }
+
+        }
+
+        .form-controls {
+            vertical-align: bottom;
+        }
+    }
+}

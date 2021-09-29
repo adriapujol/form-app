@@ -4,6 +4,8 @@ import topLeftFrame from '../img/frame_left_top_2.png';
 import topRightFrame from '../img/frame_right_2.png';
 import jenniferCarlos from '../img/jennifer_villar.png';
 import smallFlower from '../img/small_flower.png';
+import Form from '../components/Form';
+import Navbar from '../components/Navbar';
 
 
 const Main = () => {
@@ -26,6 +28,7 @@ const Main = () => {
                         <p>if you're coming please complete the form.</p>
                     </div>
                 </div>
+                {true && <Form />}
                 <img src={jenniferCarlos} className="jennifer-carlos" alt="Jennifer et Carlos" />
             </div>
         </div>

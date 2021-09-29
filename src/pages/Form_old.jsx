@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Form.scss';
+import '../components/Form.scss';
 import PersonalInfo from '../components/PersonalInfo';
 import Companions from '../components/Companions';
 import Menu from '../components/Menu';
