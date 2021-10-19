@@ -235,36 +235,46 @@ const Form2 = () => {
     return (
 
         <div className="form-container">
+
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="step1" className="field-title">Personal Info
-                        <button name="personalInfo" onClick={handleShowField}>+</button>
+                        <button className="display-field-btn" name="personalInfo" onClick={handleShowField}>
+                            <i className={showPersonalInfo ? "fas fa-chevron-down rotate-icon" : "fas fa-chevron-down"} />
+                        </button>
                     </label>
                     {
                         showPersonalInfo &&
 
                         <>
-
-                            < label htmlFor="fname">First Name</label>
-                            <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.fname} onChange={handleChange} required />
-
-                            <label htmlFor="lname">Last Name</label>
-                            <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.lname} onChange={handleChange} required />
-
-                            <label htmlFor="address">Address</label>
-                            <input type="text" id="address" name="address" placeholder="Address..." value={formData.address} onChange={handleChange} required />
-
-                            <label htmlFor="cp">Postal Code</label>
-                            <input type="text" id="cp" name="cp" placeholder="CP..." value={formData.cp} onChange={handleChange} required />
-
-                            <label htmlFor="city">City</label>
-                            <input type="text" id="city" name="city" placeholder="City..." value={formData.city} onChange={handleChange} required />
-
-                            <label htmlFor="phone">Phone</label>
-                            <input type="text" id="phone" name="phone" placeholder="Phone..." value={formData.phone} onChange={handleChange} />
-
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Email..." value={formData.email} onChange={handleChange} required />
+                            <div className="group-input">
+                                < label htmlFor="fname">First Name</label>
+                                <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.fname} onChange={handleChange} required />
+                            </div>
+                            <div className="group-input">
+                                <label htmlFor="lname">Last Name</label>
+                                <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.lname} onChange={handleChange} required />
+                            </div>
+                            <div className="group-input">
+                                <label htmlFor="address">Address</label>
+                                <input type="text" id="address" name="address" placeholder="Address..." value={formData.address} onChange={handleChange} required />
+                            </div>
+                            <div className="group-input">
+                                <label htmlFor="cp">Postal Code</label>
+                                <input type="text" id="cp" name="cp" placeholder="CP..." value={formData.cp} onChange={handleChange} required />
+                            </div>
+                            <div className="group-input">
+                                <label htmlFor="city">City</label>
+                                <input type="text" id="city" name="city" placeholder="City..." value={formData.city} onChange={handleChange} required />
+                            </div>
+                            <div className="group-input">
+                                <label htmlFor="tel">Phone</label>
+                                <input type="text" id="phone" name="phone" placeholder="Phone..." value={formData.phone} onChange={handleChange} />
+                            </div>
+                            <div className="group-input">
+                                <label htmlFor="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Email..." value={formData.email} onChange={handleChange} required />
+                            </div>
 
                             <label htmlFor="typeFood">Type of food</label>
                             <label htmlFor="meat">
@@ -283,9 +293,10 @@ const Form2 = () => {
                                 <input type="radio" name="typeFood" value="plant" checked={formData.typeFood === "plant"} onChange={handleChange} />
                                 Plant
                             </label>
-
-                            <label htmlFor="allergies">Allergies</label>
-                            <input type="text" name="allergies" placeholder="Type any allergies" value={formData.allergies} onChange={handleChange} />
+                            <div className="group-input">
+                                <label htmlFor="allergies">Allergies</label>
+                                <input type="text" name="allergies" placeholder="Type any allergies" value={formData.allergies} onChange={handleChange} />
+                            </div>
                         </>
                     }
 
@@ -296,15 +307,20 @@ const Form2 = () => {
 
                     <div className="form-group">
                         <label htmlFor="step2" className="field-title">Plus one ?
-                            <button name="plusOneInfo" onClick={handleShowField}>+</button>
+                            <button className="display-field-btn" name="plusOneInfo" onClick={handleShowField}>
+                                <i className={showPlusOneInfo ? "fas fa-chevron-down rotate-icon" : "fas fa-chevron-down"} />
+                            </button>
                         </label>
                         {showPlusOneInfo &&
                             <>
-                                <label htmlFor="fname">First Name</label>
-                                <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.plusOne.fname} onChange={handlePlusOneChange} required />
-
-                                <label htmlFor="lname">Last Name</label>
-                                <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.plusOne.lname} onChange={handlePlusOneChange} />
+                                <div className="group-input">
+                                    <label htmlFor="fname">First Name</label>
+                                    <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.plusOne.fname} onChange={handlePlusOneChange} required />
+                                </div>
+                                <div className="group-input">
+                                    <label htmlFor="lname">Last Name</label>
+                                    <input type="text" id="lname" name="lname" placeholder="Last Name..." value={formData.plusOne.lname} onChange={handlePlusOneChange} />
+                                </div>
 
 
                                 <label htmlFor="typeFoodPlusOne">Type of food</label>
@@ -324,15 +340,18 @@ const Form2 = () => {
                                     <input type="radio" name="typeFoodPlusOne" value="plant" checked={formData.plusOne.typeFood === "plant"} onChange={handlePlusOneChange} />
                                     Plant
                                 </label>
-
-                                <label htmlFor="allergies">Allergies</label>
-                                <input type="text" name="allergies" placeholder="Type any allergies" value={formData.plusOne.allergies} onChange={handlePlusOneChange} />
+                                <div className="group-input">
+                                    <label htmlFor="allergies">Allergies</label>
+                                    <input type="text" name="allergies" placeholder="Type any allergies" value={formData.plusOne.allergies} onChange={handlePlusOneChange} />
+                                </div>
                             </>}
                     </div>
                 }
                 <div className="form-group">
                     <label htmlFor="step3" className="field-title">Children
-                        <button name="childrenInfo" onClick={handleShowField}>+</button>
+                        <button className="display-field-btn" name="childrenInfo" onClick={handleShowField}>
+                            <i className={showChildrenInfo ? "fas fa-chevron-down rotate-icon" : "fas fa-chevron-down"} />
+                        </button>
                     </label>
                     {
                         showChildrenInfo &&
@@ -349,31 +368,41 @@ const Form2 = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="step4" className="field-title">Accomodation/Transport
-                        <button name="accommodationInfo" onClick={handleShowField}>+</button>
+                        <button className="display-field-btn" name="accommodationInfo" onClick={handleShowField}>
+                            <i className={showAccommodationInfo ? "fas fa-chevron-down rotate-icon" : "fas fa-chevron-down"} />
+                        </button>
                     </label>
                     {
                         showAccommodationInfo &&
 
                         <>
-                            <label htmlFor="hotel">Would you be interested in help with searching for an hotel?</label>
-                            <label htmlFor="accommodationYes">
-                                <input type="radio" id="hotelYes" name="hotel" value="yes" checked={formData.hotel === "yes"} onChange={handleChange} />
-                                yes
-                            </label>
-                            <label htmlFor="accommodationNo">
-                                <input type="radio" id="hotelNo" name="hotel" value="no" checked={formData.hotel === "no"} onChange={handleChange} />
-                                no
-                            </label>
+                            <div className="accommodation-field">
+                                <label htmlFor="hotel">Would you be interested in help with searching for an hotel?</label>
+                                <div className="yes-no-inputs">
+                                    <label htmlFor="accommodationYes">
+                                        <input type="radio" id="hotelYes" name="hotel" value="yes" checked={formData.hotel === "yes"} onChange={handleChange} />
+                                        yes
+                                    </label>
+                                    <label htmlFor="accommodationNo">
+                                        <input type="radio" id="hotelNo" name="hotel" value="no" checked={formData.hotel === "no"} onChange={handleChange} />
+                                        no
+                                    </label>
+                                </div>
+                            </div>
 
-                            <label htmlFor="transport">If you said yes to the previous question. Would you be interested in tranposrtation the day of the wedding? (hotel/church/wedding reception/hotel)</label>
-                            <label htmlFor="transportYes">
-                                <input type="radio" id="transportYes" name="transport" value="yes" checked={formData.transport === "yes"} onChange={handleChange} />
-                                yes
-                            </label>
-                            <label htmlFor="transportNo">
-                                <input type="radio" id="transportNo" name="transport" value="no" checked={formData.transport === "no"} onChange={handleChange} />
-                                no
-                            </label>
+                            <div className="accommodation-field">
+                                <label htmlFor="transport">If you said yes to the previous question. Would you be interested in tranposrtation the day of the wedding? (hotel/church/wedding reception/hotel)</label>
+                                <div className="yes-no-inputs">
+                                    <label htmlFor="transportYes">
+                                        <input type="radio" id="transportYes" name="transport" value="yes" checked={formData.transport === "yes"} onChange={handleChange} />
+                                        yes
+                                    </label>
+                                    <label htmlFor="transportNo">
+                                        <input type="radio" id="transportNo" name="transport" value="no" checked={formData.transport === "no"} onChange={handleChange} />
+                                        no
+                                    </label>
+                                </div>
+                            </div>
                         </>
                     }
                 </div>

@@ -17,27 +17,85 @@
 
     form {
         width: 80%;
-        * {
-            font-family: 'Roboto', sans-serif;
-        }
         .form-group {
             
             display: flex;
             flex-direction: column;
             border: 2px solid $main_yellow;
             margin-bottom: 5px;
-            // width: 100%;
-            // justify-content: center;
             align-items: center;
 
-            // min-height: 300px;
+            .display-field-btn {
+                cursor: pointer;
+                background-color: transparent;
+                border: none;
+                i {
+                    color: $main_yellow;
+                    font-size: 1.5em;
+                    pointer-events: none;
+                    transition: 0.2s 0s;
+                }
 
-            .field-title {
-                
+                .rotate-icon {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .field-title,.group-input,.accommodation-field {
                 width: 100%;
                 display: flex;
-                justify-content: space-between;
                 padding: 5px 10px;
+                color: $secondary_yellow;
+            }
+            // .field-title,.group-input{
+            //     color: $secondary_yellow;
+            // }
+
+            
+            .field-title {
+                color: $secondary_yellow;
+                
+                justify-content: space-between;
+                
+            }
+            
+            .group-input {
+                flex-direction: column;
+
+                label {
+                    font-size: 0.9em;
+                }
+
+                input {
+                    padding: 5px 5px;
+                    // outline: none;
+                    border: 1px solid $main_yellow;
+                    outline-color: $main_yellow;
+                }
+            }
+
+            .accommodation-field {
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                text-align: justify;
+                padding: 0px 10px;
+                width: 100%;
+
+                label {
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    font-size: 0.8em;
+                    hyphens: auto;
+                    // word-break: normal;
+                }
+
+            }
+            .yes-no-inputs {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 150px;
             }
 
         }
