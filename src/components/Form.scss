@@ -21,6 +21,7 @@
             
             display: flex;
             flex-direction: column;
+            color: $secondary_yellow;
             border: 2px solid $main_yellow;
             margin-bottom: 5px;
             align-items: center;
@@ -45,19 +46,16 @@
                 width: 100%;
                 display: flex;
                 padding: 5px 10px;
-                color: $secondary_yellow;
+                
             }
-            // .field-title,.group-input{
-            //     color: $secondary_yellow;
-            // }
-
             
             .field-title {
-                color: $secondary_yellow;
                 
                 justify-content: space-between;
                 
             }
+
+
             
             .group-input {
                 flex-direction: column;
@@ -71,6 +69,11 @@
                     // outline: none;
                     border: 1px solid $main_yellow;
                     outline-color: $main_yellow;
+                }
+
+                .plus-one-fine-print {
+                    font-size: 0.8em;
+                    color: $main_brown;
                 }
             }
 
@@ -103,5 +106,25 @@
         .form-controls {
             vertical-align: bottom;
         }
+
+        .form-btn {
+            cursor: pointer;
+            padding: 5px 0px;
+            font-size: 1em;
+            margin: 15px 5px;
+            border: none;
+            background-color: $main_yellow;
+            width: 80px;
+        }
+
+        .form-btn-delete {
+            background-color: $main_red;
+        }
+
+        .submit-btn {   
+            margin: 5px 0px;
+            float: right;
+        }
+
     }
 }

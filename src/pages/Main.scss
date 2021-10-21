@@ -32,14 +32,15 @@
         text-align: center;
         font-size: 1.1em;
 
-        // & > * {
-        //     margin-bottom: 1.5em;
-        // }
+        .main-text, .main-text b, p {
 
+            font-family: 'Dancing Script', cursive; 
+        }
         .main-text {
             text-align: justify;
             text-align-last: center;
-            margin-bottom: 0.5em;
+            margin-bottom: 0.5em;            
+        
         }
 
         .small-flower {
@@ -63,16 +64,25 @@
             .buttons {
                 width: 70%;
                 button {
+                    cursor: pointer;
                     width: 50%;
                     padding: 5px 0px;
                     border: none;
                     font-size: 1.1em;
                 }
                 .btn-yes {
-                    background-color: $third_yellow;
+                    background-color: $main_yellow;
+
+                    &:hover {
+                        background-color: $secondary_yellow;
+                    }
                 }
                 .btn-no {
-                    background-color: $main_yellow;
+                    background-color: $main-red;
+
+                    &:hover {
+                        background-color: $secondary_red;
+                    }
                 }
             }
 

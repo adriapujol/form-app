@@ -306,13 +306,16 @@ const Form2 = () => {
                 {
 
                     <div className="form-group">
-                        <label htmlFor="step2" className="field-title">Plus one ?
+                        <label htmlFor="step2" className="field-title">Plus one
                             <button className="display-field-btn" name="plusOneInfo" onClick={handleShowField}>
                                 <i className={showPlusOneInfo ? "fas fa-chevron-down rotate-icon" : "fas fa-chevron-down"} />
                             </button>
                         </label>
                         {showPlusOneInfo &&
                             <>
+                                <div className="group-input">
+                                    <label htmlFor="fname" className="plus-one-fine-print">Leave empty if there is no plus one</label>
+                                </div>
                                 <div className="group-input">
                                     <label htmlFor="fname">First Name</label>
                                     <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.plusOne.fname} onChange={handlePlusOneChange} required />
@@ -360,8 +363,8 @@ const Form2 = () => {
                                 formData.children.map((child, index) => <ChildForm totalChildren={totalChildren} child={child} index={index} key={index} handleChildrenChange={handleChildrenChange} />)
                             }
                             <div className="btn-box-children">
-                                <button onClick={handleAddChild}>Add Child</button>
-                                <button onClick={handleDeleteChild}>Delete Child</button>
+                                <button className="form-btn" onClick={handleAddChild}>Add</button>
+                                <button className="form-btn form-btn-delete" onClick={handleDeleteChild}>Delete</button>
                             </div>
                         </>
                     }
@@ -406,7 +409,7 @@ const Form2 = () => {
                         </>
                     }
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" className="form-btn submit-btn">Submit</button>
             </form>
         </div >
 
