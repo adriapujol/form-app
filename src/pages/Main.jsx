@@ -13,10 +13,8 @@ const Main = () => {
     const { currentUser } = useAuth();
 
     const [isComingAnswer, setIsComingAnswer] = useState(currentUser.isComing);
-    console.log("Is Coming?", currentUser.isComing);
 
     const postIsComing = async (reply) => {
-        console.log("Answer")
         try {
             const response = await axios.put(`http://localhost:3001/users/isComing/${currentUser._id}`, { isComing: reply });
             console.log(response.data);
