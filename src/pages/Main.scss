@@ -4,7 +4,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 100vh;
@@ -33,8 +33,8 @@
         font-size: 1.1em;
 
         .main-text, .main-text b, p {
-
-            font-family: 'Dancing Script', cursive; 
+            font-family: 'Tangerine', cursive; 
+            font-size: 1.2em;
         }
         .main-text {
             text-align: justify;
@@ -55,12 +55,17 @@
             align-items: center;
 
             p:first-child {
-                font-size: 1.3em;
+                font-size: 2em;
+                margin-bottom: 0.3em;
+            }
+            p:last-child{
+                font-size: 1.2em;
+                margin: 0.3em 0em;
             }
 
-            & > * {
-                margin-bottom: 0.5em;
-            }
+            // & > * {
+            //     margin-bottom: 0.4em;
+            // }
             .buttons {
                 width: 70%;
                 button {
@@ -78,16 +83,14 @@
                     }
                 }
                 .btn-no {
-                    background-color: $main-red;
+                    color: $mild_grey;
+                    background-color: $light_grey;
 
                     &:hover {
-                        background-color: $secondary_red;
+                        background-color: $strong_grey;
+                        color: $light_grey;
                     }
                 }
-            }
-
-            p:last-child {
-                font-size: 0.7em;
             }
                 
         }
@@ -95,11 +98,17 @@
 
 
     .jennifer-carlos {
-        position: relative;
         width: 100%;
         height: auto;
         bottom: 0;
         left: 0.5em;
+    }
+
+    .bottom-img-absolute {
+        position: absolute;
+    }
+    .bottom-img-relative {
+        position: relative;
     }
 
 }

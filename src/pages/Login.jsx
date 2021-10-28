@@ -40,7 +40,7 @@ function Login() {
                         <p>Rendez-vous pour le marriage de</p>
                         <p>Jennifer & Carlos</p>
                         <p>28 mai 2022</p>
-                        <p>Pairs</p>
+                        <p>Paris</p>
                     </div>
                     <div className="form-wrapper">
                         <form className="login-form" onSubmit={handleSubmit}>

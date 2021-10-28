@@ -44,24 +44,24 @@
             margin-left: 2em;
 
             :nth-child(1) {
-                font-size: 0.9em;
+                font-size: 1.3em;
             }
             :nth-child(2) {
-                font-size: 2em;
-                margin-left: -0.15em;
+                font-size: 3em;
+                margin-left: -0.4em;
             }
             :nth-child(3) {
-                font-size: 1.4em;
-                margin-left: -0.15em;
+                font-size: 2em;
+                // margin-left: -0.15em;
             }
             :nth-child(4) {
-                font-size: 1.4em;
-                margin-left: -0.15em;
+                font-size: 2em;
+                margin-left: -0.3em;
 
             }
 
             p {
-                font-family: 'Dancing Script', cursive;
+                font-family: 'Tangerine', cursive;                
             }
 
         }

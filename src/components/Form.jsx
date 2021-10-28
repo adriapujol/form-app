@@ -205,7 +205,7 @@ const Form2 = () => {
     const postForm = async () => {
         console.log("SUBMIT")
         try {
-            const response = await axios.put(`http://localhost:3001/users//form/${currentUser._id}`, formData);
+            const response = await axios.put(`http://localhost:3001/users/form/${currentUser._id}`, formData);
             console.log(response.data);
         } catch (error) {
             console.log(error.response.data.message)
@@ -318,7 +318,7 @@ const Form2 = () => {
                                 </div>
                                 <div className="group-input">
                                     <label htmlFor="fname">First Name</label>
-                                    <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.plusOne.fname} onChange={handlePlusOneChange} required />
+                                    <input type="text" id="fname" name="fname" placeholder="Name..." value={formData.plusOne.fname} onChange={handlePlusOneChange} />
                                 </div>
                                 <div className="group-input">
                                     <label htmlFor="lname">Last Name</label>
