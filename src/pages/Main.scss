@@ -34,7 +34,7 @@
 
         .main-text, .main-text b, p {
             font-family: 'Tangerine', cursive; 
-            font-size: 1.2em;
+            font-size: 1.3em;
         }
         .main-text {
             text-align: justify;
@@ -59,8 +59,9 @@
                 margin-bottom: 0.3em;
             }
             p:last-child{
-                font-size: 1.2em;
-                margin: 0.3em 0em;
+                font-size: 0.7em;
+                margin: 1em 0em 0em 0em;
+                font-family: 'Roboto', sans-serif;
             }
 
             .buttons {
@@ -71,6 +72,7 @@
                     padding: 5px 0px;
                     border: none;
                     font-size: 1.1em;
+                    transition: all 0.5s ease;
                 }
                 .btn-yes {
                     background-color: $main_yellow;
@@ -86,6 +88,31 @@
                     &:hover {
                         background-color: $strong_grey;
                         color: $light_grey;
+                    }
+                }
+
+                .btn-big {
+                    padding: 10px 5px;
+                }
+
+                .btn-small {
+                    padding: 3px 0px;
+                }
+
+                .btn-yes-green {
+                    background-color: $main_green;
+                    color: $light_grey;
+
+                    &:hover {
+                        background-color: $secondary_green;
+                    }
+                }
+
+                .btn-no-red {
+                    color: #000;
+                    background-color: $main_red;
+                    &:hover {
+                        background-color: $secondary_red;
                     }
                 }
             }

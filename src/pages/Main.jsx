@@ -42,16 +42,25 @@ const Main = () => {
                     <div className="button-box">
                         <p>Are you coming?</p>
                         <div className="buttons">
-                            <button className="btn-yes" onClick={() => handleIsComing(true)}>Yes</button>
-                            <button className="btn-no" onClick={() => handleIsComing(false)}>No</button>
+                            <button
+                                className={isComingAnswer ? "btn-yes btn-big btn-yes-green" : typeof isComingAnswer !== "undefined" ? "btn-no btn-small" : "btn-yes"}
+                                onClick={() => handleIsComing(true)}>
+                                Yes
+                            </button>
+                            <button
+                                className="btn-no btn-small"
+                                className={isComingAnswer ? "btn-no btn-small" : typeof isComingAnswer !== "undefined" ? "btn-no btn-big btn-no-red" : "btn-no"}
+                                onClick={() => handleIsComing(false)}>
+                                No
+                            </button>
                         </div>
-                        <p>if you're coming please complete the form.</p>
+                        {isComingAnswer && <p>If you're coming please complete the form below.</p>}
                     </div>
                 </div>
                 {isComingAnswer && <Form />}
                 <img src={jenniferCarlos} className={isComingAnswer ? "jennifer-carlos bottom-img-relative" : "jennifer-carlos bottom-img-absolute"} alt="Jennifer et Carlos" />
             </div>
-        </div>
+        </div >
     )
 }
 

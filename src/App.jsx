@@ -14,11 +14,11 @@ import PublicRoute from './PublicRoute';
 
 function App() {
 
-    const [user, setUser] = useState(null);
-    const [auth, setAuth] = useState();
-    const [users, setUsers] = useState([]);
+    // const [user, setUser] = useState(null);
+    // const [auth, setAuth] = useState();
+    // const [users, setUsers] = useState([]);
 
-    const { currentUser } = useAuth()
+    // const { currentUser } = useAuth()
 
 
     return (
@@ -33,14 +33,14 @@ function App() {
                         <Navbar />
                         <Admin />
                     </PrivateRoute>
-                    <PrivateRoute adminOnly={false} exact path="/form" >
+                    {/* <PrivateRoute adminOnly={false} exact path="/form" >
                         <Navbar />
                         <Form />
                     </PrivateRoute>
                     <PrivateRoute adminOnly={false} exact path="/form2" >
                         <Navbar />
                         <Form2 />
-                    </PrivateRoute>
+                    </PrivateRoute> */}
                     <PublicRoute restricted={true} path="/login">
                         <Login />
                     </PublicRoute>
