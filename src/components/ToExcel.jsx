@@ -5,23 +5,24 @@ function ToExcel({ users }) {
 
     const headers = [
         { label: "Username", key: "username" },
+        { label: "Coming", key: "isComing" },
         { label: "First Name", key: "fname" },
         { label: "Last Name", key: "lname" },
         { label: "Address", key: "address" },
         { label: "Phone", key: "phone" },
         { label: "Email", key: "email" },
-        { label: "Companions", key: "numberPersons" },
-        { label: "Minors", key: "numberMinors" },
-        { label: "Type of Food", key: "typeFood" },
+        { label: "CP", key: "cp" },
+        { label: "City", key: "city" },
+        { label: "Food", key: "typeFood" },
         { label: "Allergies", key: "allergies" },
-        { label: "Accomodation", key: "hotel" },
-        { label: "Rooms", key: "numberRooms" },
-        { label: "Transport", key: "transport" },
-        { label: "Childcare", key: "childcare" }
+        { label: "PlusOne", key: "namePlusOne" },
+        { label: "Children", key: "numChildren" },
+        { label: "Hotel", key: "hotel" },
+        { label: "Transport", key: "transport" }
     ]
 
     const formReplies = users.map(user => {
-        return ({ username: user.username, ...user.formAnswers });
+        return ({ username: user.username, ...user.formAnswers, namePlusOne: user.namePlusOne, numChildren: user.numChildren });
     });
     const data = [...formReplies];
 
