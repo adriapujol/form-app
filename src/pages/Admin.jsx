@@ -42,6 +42,7 @@ const Admin = () => {
         const formatedList = list.map(user => {
             let childrenNum = 0;
             let plusOneName = "";
+            let isComingText = "no";
             user.formAnswers.children.forEach(child => {
                 if (child.fname) {
                     childrenNum++;
@@ -49,14 +50,13 @@ const Admin = () => {
             })
             if (user.formAnswers.plusOne.fname) plusOneName = `${user.formAnswers.plusOne.fname} ${user.formAnswers.plusOne.lname}`
 
-            return { ...user, namePlusOne: plusOneName, numChildren: childrenNum };
+            if (user.isComing) isComingText = "yes";
+
+            return { ...user, isComing: isComingText, namePlusOne: plusOneName, numChildren: childrenNum };
         })
 
         return formatedList;
     }
-
-
-
 
     const filterUserList = userList => {
         const formatedList = formatUserList(userList);
@@ -80,7 +80,6 @@ const Admin = () => {
     return (
         <div className="admin">
             <Register></Register>
-
             <div className="table-box">
                 <div className="info-box">
                     <div className="formFilter">
@@ -93,7 +92,14 @@ const Admin = () => {
                     <div className="count">
                         Users Count: {userTotalFormDoneNumber}/{userTotalNumber}
                     </div>
-                    <ToExcel users={formDoneFilterList} />
+                    <div className="data-box">
+                        <p>Table data</p>
+                        <ToExcel users={formDoneFilterList} fullData={false} />
+                    </div>
+                    <div className="data-box">
+                        <p>Full data</p>
+                        <ToExcel users={formDoneFilterList} fullData={true} />
+                    </div>
                 </div>
                 <div className="table-container">
                     <Table users={formDoneFilterList} setUsers={setUsers} />

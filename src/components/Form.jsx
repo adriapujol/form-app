@@ -350,7 +350,7 @@ const Form2 = () => {
                             </>}
                     </div>
                 }
-                <div className="form-group">
+                <div className="form-group children-group">
                     <label htmlFor="step3" className="field-title">Children
                         <button className="display-field-btn" name="childrenInfo" onClick={handleShowField}>
                             <i className={showChildrenInfo ? "fas fa-chevron-down rotate-icon" : "fas fa-chevron-down"} />

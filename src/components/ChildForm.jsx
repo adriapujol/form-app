@@ -39,7 +39,7 @@ function ChildForm({ totalChildren, child, index, handleChildrenChange }) {
                         <input type="radio" data-child={index} name={`typeFood-${index}`} value="plant" checked={child.typeFood === "plant"} onChange={handleChildrenChange} />
                         Plant
                     </label>
-                    <div className="group-input">
+                    <div className="group-input children-last-input">
                         <label htmlFor="allergies">Allergies</label>
                         <input type="text" data-child={index} name="allergies" placeholder="Type any allergies" value={child.allergies} onChange={handleChildrenChange} />
                     </div>

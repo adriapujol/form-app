@@ -10,12 +10,11 @@
 
     .toExcel {
         cursor: pointer;
-        padding: 5px 15px;
-        background-color: $main_yellow;
-        color: #000;
+        padding: 0px 5px;
+        color: $secondary_yellow;
         text-decoration: none;
         &:hover {
-            background-color: $secondary_yellow;
+           color: $main_green;
         }
     }
 
@@ -37,7 +36,6 @@
             padding: 10px 10px;
             width: 100%;
             background-color: $light_grey;
-            margin-bottom: 5px;
         }
 
 
@@ -54,6 +52,13 @@
         select {
             padding: 5px 5px;
         }
+    }
+
+    .data-box {
+        background-color: $light_grey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
 }

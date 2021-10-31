@@ -29,7 +29,7 @@ const TableRow = ({ user, number, setUsers }) => {
             <tr>
                 <td>{number + 1}</td>
                 <td>{user.username}</td>
-                <td>{user.isComing ? "yes" : "no"}</td>
+                <td>{user.isComing}</td>
                 <td>{user.formAnswers.fname}</td>
                 <td>{user.formAnswers.lname}</td>
                 <td>{user.formAnswers.address}</td>
