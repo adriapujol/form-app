@@ -1,3 +1,59 @@
+@import '../colors.scss';
+
 .admin {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px 0px;
+
+    .toExcel {
+        cursor: pointer;
+        padding: 5px 15px;
+        background-color: $main_yellow;
+        color: #000;
+        text-decoration: none;
+        &:hover {
+            background-color: $secondary_yellow;
+        }
+    }
+
+
+    .table-box {
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid $main_yellow;
+        width: 95%;
+
+
+        .info-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 10px;
+            width: 100%;
+            background-color: $light_grey;
+            margin-bottom: 5px;
+        }
+
+
+        .table-container {
+            overflow: auto;
+            width: 100%;
+        }
+
+
+    }
+
+    .formFilter {        
+
+        select {
+            padding: 5px 5px;
+        }
+    }
+
 }

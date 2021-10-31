@@ -32,29 +32,38 @@ function Register() {
 
     return (
         <form className="register-form" onSubmit={onRegister}>
-            <label htmlFor="username">Username</label>
-            <input
-                type="text"
-                className="username"
-                placeholder="Username"
-                value={username}
-                onChange={usernameChange}
-                required
-            />
-            <label htmlFor="password">Password</label>
-            <input
-                type="password"
-                className="passowrd"
-                placeholder="Password"
-                value={password}
-                onChange={passwordChange}
-                required
-            />
-            <label htmlFor="role">Role</label>
-            <select name="role" id="role" value={role} onChange={roleChange}>
-                <option value="basic">basic</option>
-                <option value="admin">admin</option>
-            </select>
+            <div className="input-box">
+
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    className="username"
+                    placeholder="Username"
+                    value={username}
+                    onChange={usernameChange}
+                    required
+                />
+            </div>
+            <div className="input-box">
+
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    className="passowrd"
+                    placeholder="Password"
+                    value={password}
+                    onChange={passwordChange}
+                    required
+                />
+            </div>
+            <div className="input-box">
+
+                <label htmlFor="role">Role</label>
+                <select name="role" id="role" value={role} onChange={roleChange}>
+                    <option value="basic">basic</option>
+                    <option value="admin">admin</option>
+                </select>
+            </div>
             <button className="register-btn" disabled={loading}>Register</button>
             <div className="error-message">{errorMessage}</div>
         </form>

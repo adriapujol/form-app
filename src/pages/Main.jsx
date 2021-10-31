@@ -48,7 +48,6 @@ const Main = () => {
                                 Yes
                             </button>
                             <button
-                                className="btn-no btn-small"
                                 className={isComingAnswer ? "btn-no btn-small" : typeof isComingAnswer !== "undefined" ? "btn-no btn-big btn-no-red" : "btn-no"}
                                 onClick={() => handleIsComing(false)}>
                                 No

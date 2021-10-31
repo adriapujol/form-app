@@ -16,10 +16,14 @@ export function AuthProvider({ children }) {
 
     async function register(username, password, role) {
         const userInfo = { username: username, password: password, role: role };
+
         try {
             const response = await axios.post('http://localhost:3001/user/register', userInfo, { withCredentials: true });
             const user = response.data;
             console.log(user);
+            setErrorMessage("");
+            alert(`User ${user.username} added successfully!`);
+
         } catch (error) {
             if (error.message === "Network Error") {
                 setErrorMessage(error.message);

@@ -36,16 +36,40 @@ const Admin = () => {
         }
     }, [users])
 
-    const filterUserList = userList => {
-        let filteredList = userList;
 
-        if (formAnswered === "Form Answered") return filteredList = userList.filter(user => user.formDone === true);
-        if (formAnswered === "Form Not Answered") return filteredList = userList.filter(user => user.formDone === false);
+    const formatUserList = list => {
+
+        const formatedList = list.map(user => {
+            let childrenNum = 0;
+            let plusOneName = "";
+            user.formAnswers.children.forEach(child => {
+                if (child.fname) {
+                    childrenNum++;
+                }
+            })
+            if (user.formAnswers.plusOne.fname) plusOneName = `${user.formAnswers.plusOne.fname} ${user.formAnswers.plusOne.lname}`
+
+            return { ...user, namePlusOne: plusOneName, numChildren: childrenNum };
+        })
+
+        return formatedList;
+    }
+
+
+
+
+    const filterUserList = userList => {
+        const formatedList = formatUserList(userList);
+        let filteredList = formatedList;
+
+        if (formAnswered === "Form Answered") return filteredList = formatedList.filter(user => user.formDone === true);
+        if (formAnswered === "Form Not Answered") return filteredList = formatedList.filter(user => user.formDone === false);
 
         return filteredList;
     }
 
     let formDoneFilterList = filterUserList(users);
+    console.log("this list is used: ", formDoneFilterList)
 
     const handleSelect = e => {
         e.preventDefault();
@@ -54,20 +78,27 @@ const Admin = () => {
     }
 
     return (
-        <div className="container admin">
+        <div className="admin">
             <Register></Register>
-            <ToExcel users={formDoneFilterList} />
-            <div className="count">
-                Users Count: {userTotalFormDoneNumber}/{userTotalNumber}
+
+            <div className="table-box">
+                <div className="info-box">
+                    <div className="formFilter">
+                        <select id="formFilter" name="formFilter" value={formAnswered} onChange={handleSelect}>
+                            <option value="Form Answered">Form Answered</option>
+                            <option value="Form Not Answered" >Form Not Answered</option>
+                            <option value="All users">All users</option>
+                        </select>
+                    </div>
+                    <div className="count">
+                        Users Count: {userTotalFormDoneNumber}/{userTotalNumber}
+                    </div>
+                    <ToExcel users={formDoneFilterList} />
+                </div>
+                <div className="table-container">
+                    <Table users={formDoneFilterList} setUsers={setUsers} />
+                </div>
             </div>
-            <div className="formFilter">
-                <select id="formFilter" name="formFilter" value={formAnswered} onChange={handleSelect}>
-                    <option value="Form Answered">Form Answered</option>
-                    <option value="Form Not Answered" >Form Not Answered</option>
-                    <option value="All users">All users</option>
-                </select>
-            </div>
-            <Table users={formDoneFilterList} setUsers={setUsers} />
         </div>
     )
 }

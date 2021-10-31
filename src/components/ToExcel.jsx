@@ -34,6 +34,7 @@ function ToExcel({ users }) {
             filename={"guests-data.csv"}
             separator={","}
             enclosingCharacter={`"`}
+            className="toExcel"
         >
             Download
         </CSVLink>

@@ -42,27 +42,30 @@ const Table = ({ users, setUsers }) => {
                 <tr>
                     <th>num</th>
                     <th>username</th>
+                    <th>Coming</th>
                     <th>
+                        First Name
                         <button onClick={() => requestSort("fname")}>
-                            First Name
+                            <i class="fas fa-sort"></i>
                         </button>
                     </th>
                     <th>
+                        Last Name
                         <button onClick={() => requestSort("lname")}>
-                            Last Name
+                            <i class="fas fa-sort"></i>
                         </button>
                     </th>
                     <th>Address</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Companions</th>
-                    <th>Minors</th>
-                    <th>Type of Food</th>
+                    <th>CP</th>
+                    <th>City</th>
+                    <th>Food</th>
                     <th>Allergies</th>
-                    <th>Accomodation</th>
-                    <th>Rooms</th>
+                    <th>Plus one</th>
+                    <th>Children</th>
+                    <th>Hotel</th>
                     <th>Transport</th>
-                    <th>Childcare</th>
                     <th>Controls</th>
                 </tr>
             </thead>

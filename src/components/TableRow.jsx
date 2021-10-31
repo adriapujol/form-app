@@ -22,21 +22,24 @@ const TableRow = ({ user, number, setUsers }) => {
         <tr>
             <td>{number + 1}</td>
             <td>{user.username}</td>
+            <td>{user.isComing}</td>
             <td>{user.formAnswers.fname}</td>
             <td>{user.formAnswers.lname}</td>
             <td>{user.formAnswers.address}</td>
             <td>{user.formAnswers.phone}</td>
             <td>{user.formAnswers.email}</td>
-            <td>{user.formAnswers.numberPersons}</td>
-            <td>{user.formAnswers.numberMinors}</td>
+            <td>{user.formAnswers.cp}</td>
+            <td>{user.formAnswers.city}</td>
             <td>{user.formAnswers.typeFood}</td>
             <td>{user.formAnswers.allergies}</td>
+            <td>{user.namePlusOne}</td>
+            <td>{user.numChildren}</td>
             <td>{user.formAnswers.hotel}</td>
-            <td>{user.formAnswers.numberRooms}</td>
             <td>{user.formAnswers.transport}</td>
-            <td>{user.formAnswers.childcare}</td>
             <td>
-                <button onClick={deleteUser}>Delete</button>
+                <button onClick={deleteUser}>
+                    <i class="fas fa-trash-alt"></i>
+                </button>
             </td>
         </tr>
     )

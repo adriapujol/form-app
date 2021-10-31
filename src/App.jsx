@@ -30,7 +30,7 @@ function App() {
                         <Main />
                     </PrivateRoute>
                     <PrivateRoute adminOnly={true} exact path="/admin" >
-                        <Navbar />
+                        {/* <Navbar /> */}
                         <Admin />
                     </PrivateRoute>
                     {/* <PrivateRoute adminOnly={false} exact path="/form" >
