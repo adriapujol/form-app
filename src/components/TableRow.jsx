@@ -25,7 +25,7 @@ const TableRow = ({ user, number, setUsers }) => {
 
     return (
         <>
-            {confirmDelete && <Modal deleteuser={deleteUser} setConfirmDelete={setConfirmDelete} />}
+            {confirmDelete && <Modal deleteUser={deleteUser} setConfirmDelete={setConfirmDelete} />}
             <tr>
                 <td>{number + 1}</td>
                 <td>{user.username}</td>
