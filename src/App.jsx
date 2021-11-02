@@ -33,14 +33,14 @@ function App() {
                         {/* <Navbar /> */}
                         <Admin />
                     </PrivateRoute>
-                    {/* <PrivateRoute adminOnly={false} exact path="/form" >
+                    <PrivateRoute adminOnly={false} exact path="/form" >
                         <Navbar />
                         <Form />
                     </PrivateRoute>
                     <PrivateRoute adminOnly={false} exact path="/form2" >
                         <Navbar />
                         <Form2 />
-                    </PrivateRoute> */}
+                    </PrivateRoute>
                     <PublicRoute restricted={true} path="/login">
                         <Login />
                     </PublicRoute>

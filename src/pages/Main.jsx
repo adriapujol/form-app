@@ -6,11 +6,17 @@ import topRightFrame from '../img/frame_right_2.png';
 import jenniferCarlos from '../img/jennifer_villar.png';
 import smallFlower from '../img/small_flower.png';
 import Form from '../components/Form';
+import LangSelect from '../components/LangSelect';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
+
 
 const Main = () => {
 
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
+    const { currentText } = useLanguage();
+
+    const { navLogout } = currentText;
 
     const [isComingAnswer, setIsComingAnswer] = useState(currentUser.isComing);
 
@@ -34,7 +40,14 @@ const Main = () => {
             <div className="main-wrapper">
                 <img src={topLeftFrame} className="frame frame-left" alt="flowers" />
                 <img src={topRightFrame} className="frame frame-right" alt="flowers" />
+                <div className="logout-box">
+                    <button className="btn-logout" onClick={() => logout()} title={navLogout}>
+                        <i class="fas fa-power-off"></i>
+                    </button>
+                    <p>{navLogout}</p>
+                </div>
                 <div className="main-content">
+                    <LangSelect></LangSelect>
                     <div className="main-text">
                         You have been invited to the wedding of <b>Jennifer</b> and <b>Carlos</b> on May 28th, 2022 in Paris, location place number 23.
                     </div>

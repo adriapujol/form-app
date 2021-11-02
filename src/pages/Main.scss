@@ -26,6 +26,47 @@
         right: 0;    
     }
 
+    .logout-box {
+        z-index: 99;
+        position: absolute;
+        bottom: 1%;
+        right: 1%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        
+        * {
+            color: $strong-grey;
+        }
+        
+        &:hover {
+            * {
+                color: $main-red;   
+            }
+            .btn-logout {
+                border: 2px solid $main-red;
+            }
+        }
+        .btn-logout {
+            cursor: pointer;
+            background-color: #fff;
+            border: 2px solid $strong-grey;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            margin-bottom: 2px;
+
+        }
+        
+        p {
+            font-size: 0.7em;
+        }
+
+    }
+
+
     .main-content {
         margin-top: 25%;
         width: 60%;
