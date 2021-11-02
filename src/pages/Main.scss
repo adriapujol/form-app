@@ -27,7 +27,7 @@
     }
 
     .logout-box {
-        z-index: 99;
+        z-index: 97;
         position: absolute;
         bottom: 1%;
         right: 1%;
@@ -113,7 +113,7 @@
                     padding: 5px 0px;
                     border: none;
                     font-size: 1.1em;
-                    transition: all 0.5s ease;
+                    transition: all 0.5s ease-in-out;
                 }
                 .btn-yes {
                     background-color: $main_yellow;
@@ -133,11 +133,11 @@
                 }
 
                 .btn-big {
-                    padding: 10px 5px;
+                     width: 70%;
                 }
 
                 .btn-small {
-                    padding: 3px 0px;
+                    width: 30%;
                 }
 
                 .btn-yes-green {

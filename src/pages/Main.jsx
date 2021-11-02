@@ -7,8 +7,10 @@ import jenniferCarlos from '../img/jennifer_villar.png';
 import smallFlower from '../img/small_flower.png';
 import Form from '../components/Form';
 import LangSelect from '../components/LangSelect';
+import Modal from '../components/Modal';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
+
 
 
 const Main = () => {
@@ -19,6 +21,7 @@ const Main = () => {
     const { navLogout } = currentText;
 
     const [isComingAnswer, setIsComingAnswer] = useState(currentUser.isComing);
+    const [confirmLogout, setConfirmLogout] = useState(false);
 
     const postIsComing = async (reply) => {
         try {
@@ -40,8 +43,9 @@ const Main = () => {
             <div className="main-wrapper">
                 <img src={topLeftFrame} className="frame frame-left" alt="flowers" />
                 <img src={topRightFrame} className="frame frame-right" alt="flowers" />
+                {confirmLogout && <Modal action={logout} closeModal={setConfirmLogout} />}
                 <div className="logout-box">
-                    <button className="btn-logout" onClick={() => logout()} title={navLogout}>
+                    <button className="btn-logout" onClick={() => setConfirmLogout(true)}>
                         <i class="fas fa-power-off"></i>
                     </button>
                     <p>{navLogout}</p>
