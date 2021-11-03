@@ -8,10 +8,10 @@ function Modal({ action, closeModal }) {
         <div className="confirm-delete">
 
             <div className="confirm-box">
-                {/* <div className="modal-frame-wrapper">
+                <div className="modal-frame-wrapper">
                     <img src={topLeftFrame} className="modal-frame modal-frame-left" alt="flowers" />
                     <img src={topRightFrame} className="modal-frame modal-frame-right" alt="flowers" />
-                </div> */}
+                </div>
                 Are you sure?
                 <div>
                     <button onClick={() => {

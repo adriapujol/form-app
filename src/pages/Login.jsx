@@ -3,6 +3,7 @@ import './Login.scss';
 import { useAuth } from '../context/AuthContext';
 import topRightFrame from '../img/frame_right.png';
 import bottomLeftFrame from '../img/frame_left.png';
+import LangSelect from '../components/LangSelect';
 
 
 function Login() {
@@ -30,6 +31,9 @@ function Login() {
 
     return (
         <div className="container">
+            <div className="lang-sel-box">
+                <LangSelect />
+            </div>
             <div className="login-card">
 
                 <img src={topRightFrame} className="top-right-frame" alt="flowers" />

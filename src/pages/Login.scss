@@ -1,5 +1,15 @@
 @import '../colors.scss';
 
+
+.lang-sel-box {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    // bottom: 5px;
+    // right: 5px;
+    z-index: 99;
+}
+
 .login-card {
     
     position: relative;

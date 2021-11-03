@@ -41,17 +41,19 @@ const Main = () => {
     return (
         <div className="container">
             <div className="main-wrapper">
+                <div className="lang-box">
+                    <LangSelect />
+                </div>
                 <img src={topLeftFrame} className="frame frame-left" alt="flowers" />
                 <img src={topRightFrame} className="frame frame-right" alt="flowers" />
                 {confirmLogout && <Modal action={logout} closeModal={setConfirmLogout} />}
                 <div className="logout-box">
                     <button className="btn-logout" onClick={() => setConfirmLogout(true)}>
-                        <i class="fas fa-power-off"></i>
+                        <i className="fas fa-power-off"></i>
                     </button>
                     <p>{navLogout}</p>
                 </div>
                 <div className="main-content">
-                    <LangSelect></LangSelect>
                     <div className="main-text">
                         You have been invited to the wedding of <b>Jennifer</b> and <b>Carlos</b> on May 28th, 2022 in Paris, location place number 23.
                     </div>

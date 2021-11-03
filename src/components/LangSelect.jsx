@@ -12,18 +12,13 @@ function Nav() {
     }
 
     return (
-        <div className="nav">
-            <div className="lang-select">
-                <div className="languages">
-                    <select id="languages" name="langauges" value={currentLanguage} onChange={selectLanguage}>
-                        <option value="en">EN</option>
-                        <option value="fr">FR</option>
-                        <option value="es">ES</option>
-                    </select>
-                    <span className="custom-arrow"></span>
-                </div>
-            </div>
-        </div >
+        <div className="languages">
+            <select id="languages" name="langauges" value={currentLanguage} onChange={selectLanguage}>
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+                <option value="es">ES</option>
+            </select>
+        </div>
     )
 }
 
