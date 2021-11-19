@@ -18,7 +18,7 @@ const Main = () => {
     const { currentUser, logout } = useAuth();
     const { currentText } = useLanguage();
 
-    const { navLogout } = currentText;
+    const { navLogout, mainMainText, mainAreYouComing, mainFillFormMessage, yes, no } = currentText;
 
     const [isComingAnswer, setIsComingAnswer] = useState(currentUser.isComing);
     const [confirmLogout, setConfirmLogout] = useState(false);
@@ -55,24 +55,24 @@ const Main = () => {
                 </div>
                 <div className="main-content">
                     <div className="main-text">
-                        You have been invited to the wedding of <b>Jennifer</b> and <b>Carlos</b> on May 28th, 2022 in Paris, location place number 23.
+                        {mainMainText}
                     </div>
                     <img src={smallFlower} className="small-flower" alt="flower" />
                     <div className="button-box">
-                        <p>Are you coming?</p>
+                        <p>{mainAreYouComing}</p>
                         <div className="buttons">
                             <button
                                 className={isComingAnswer ? "btn-yes btn-big btn-yes-green" : typeof isComingAnswer !== "undefined" ? "btn-no btn-small" : "btn-yes"}
                                 onClick={() => handleIsComing(true)}>
-                                Yes
+                                {yes}
                             </button>
                             <button
                                 className={isComingAnswer ? "btn-no btn-small" : typeof isComingAnswer !== "undefined" ? "btn-no btn-big btn-no-red" : "btn-no"}
                                 onClick={() => handleIsComing(false)}>
-                                No
+                                {no}
                             </button>
                         </div>
-                        {isComingAnswer && <p>If you're coming please complete the form below.</p>}
+                        {isComingAnswer && <p>{mainFillFormMessage}</p>}
                     </div>
                 </div>
                 {isComingAnswer && <Form />}
