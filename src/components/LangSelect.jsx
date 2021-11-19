@@ -14,7 +14,6 @@ function Nav() {
     return (
         <div className="languages">
             <select id="languages" name="langauges" value={currentLanguage} onChange={selectLanguage}>
-                <option value="en">EN</option>
                 <option value="fr">FR</option>
                 <option value="es">ES</option>
             </select>
