@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Form.scss';
+import '../components/Form.scss';
 import PersonalInfo from '../components/PersonalInfo';
 import Companions from '../components/Companions';
 import Menu from '../components/Menu';
@@ -56,7 +56,7 @@ const Form = () => {
 
     const postForm = async () => {
         try {
-            const response = await axios.put(`http://localhost:3001/users//form/${currentUser._id}`, formData);
+            const response = await axios.put(`http://localhost:3001/users/form/${currentUser._id}`, formData);
             console.log(response.data);
         } catch (error) {
             console.log(error.response.data.message)

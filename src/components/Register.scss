@@ -1,0 +1,33 @@
+@import '../colors.scss';
+
+.register-form {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 10px 10px;
+    width: 95%;
+    border: 2px solid $main_yellow;
+
+
+    input, select, label {
+        padding: 5px 5px;
+        margin: 5px 10px 0px 5px;
+    }
+
+    select {
+        margin-right: 10px;
+    }
+
+    button {
+        cursor: pointer;
+        background-color: $main_yellow;
+        border: none;
+        padding: 5px 15px;
+        margin: 5px 0px;
+
+        &:hover {
+            background-color: $secondary_yellow;
+        }
+    }
+    
+}

@@ -1,3 +1,64 @@
+@import '../colors.scss';
+
 .admin {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px 0px;
+
+    .toExcel {
+        cursor: pointer;
+        padding: 0px 5px;
+        color: $secondary_yellow;
+        text-decoration: none;
+        &:hover {
+           color: $main_green;
+        }
+    }
+
+
+    .table-box {
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid $main_yellow;
+        width: 95%;
+
+
+        .info-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 10px;
+            width: 100%;
+            background-color: $light_grey;
+        }
+
+
+        .table-container {
+            overflow: auto;
+            width: 100%;
+        }
+
+
+    }
+
+    .formFilter {        
+
+        select {
+            padding: 5px 5px;
+        }
+    }
+
+    .data-box {
+        background-color: $light_grey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 }

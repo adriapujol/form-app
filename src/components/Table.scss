@@ -1,0 +1,34 @@
+@import '../colors.scss';
+
+table {
+    border-collapse: collapse;
+    table-layout:fixed;
+    width: 100%;
+    min-width: 1000px;
+    font-size: 0.7em;
+
+    
+    th, td, tr {
+        padding: 2px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: $main_yellow;
+    }
+    th, td {
+        border: 1px solid $main_yellow;
+        text-align: center;
+    }
+
+    
+    tr th, td {
+
+        button {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+        }
+    }
+    
+}

@@ -1,0 +1,133 @@
+@import '../colors.scss';
+
+.form-container {
+    
+    // background-color: lightblue;
+    // border: 2px solid green;
+    margin: 20px 0px;
+    width: 100%;
+    // min-width: 450px;
+    // min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+    form {
+        width: 80%;
+        .form-group {
+            
+            display: flex;
+            flex-direction: column;
+            color: $secondary_yellow;
+            border: 2px solid $main_yellow;
+            margin-bottom: 5px;
+            align-items: center;
+
+            .display-field-btn {
+                cursor: pointer;
+                background-color: transparent;
+                border: none;
+                i {
+                    color: $main_yellow;
+                    font-size: 1.5em;
+                    pointer-events: none;
+                    transition: 0.2s 0s;
+                }
+
+                .rotate-icon {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .field-title,.group-input,.accommodation-field {
+                width: 100%;
+                display: flex;
+                padding: 5px 10px;
+                
+            }
+            .children-last-input {
+                padding-bottom:25px;
+            }
+            
+            .field-title {
+                
+                justify-content: space-between;
+                
+            }
+
+
+            
+            .group-input {
+                flex-direction: column;
+
+                label {
+                    font-size: 0.9em;
+                }
+
+                input {
+                    padding: 5px 5px;
+                    // outline: none;
+                    border: 1px solid $main_yellow;
+                    outline-color: $main_yellow;
+                }
+
+                .plus-one-fine-print {
+                    font-size: 0.8em;
+                    color: $main_brown;
+                }
+            }
+
+            .accommodation-field {
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                text-align: justify;
+                padding: 0px 10px;
+                width: 100%;
+
+                label {
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    font-size: 0.8em;
+                    hyphens: auto;
+                    // word-break: normal;
+                }
+
+            }
+            .yes-no-inputs {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 150px;
+            }
+
+        }
+
+        .form-controls {
+            vertical-align: bottom;
+        }
+
+        .form-btn {
+            cursor: pointer;
+            padding: 5px 0px;
+            font-size: 1em;
+            margin: 15px 5px;
+            border: none;
+            background-color: $main_yellow;
+            width: 80px;
+        }
+
+        .form-btn-delete {
+            background-color: $main_red;
+        }
+
+        .submit-btn {   
+            margin: 5px 0px;
+            float: right;
+        }
+
+    }
+}

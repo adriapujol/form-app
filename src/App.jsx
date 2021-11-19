@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './App.scss';
-import Form from './pages/Form';
+import Form from './pages/Form_old';
+import Form2 from './components/Form';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Main from './pages/Main';
@@ -13,11 +14,11 @@ import PublicRoute from './PublicRoute';
 
 function App() {
 
-    const [user, setUser] = useState(null);
-    const [auth, setAuth] = useState();
-    const [users, setUsers] = useState([]);
+    // const [user, setUser] = useState(null);
+    // const [auth, setAuth] = useState();
+    // const [users, setUsers] = useState([]);
 
-    const { currentUser } = useAuth()
+    // const { currentUser } = useAuth()
 
 
     return (
@@ -25,16 +26,20 @@ function App() {
             <div className="App">
                 <Switch>
                     <PrivateRoute adminOnly={false} exact path={["/", "/main"]} >
-                        <Navbar />
+                        {/* <Navbar /> */}
                         <Main />
                     </PrivateRoute>
                     <PrivateRoute adminOnly={true} exact path="/admin" >
-                        <Navbar />
+                        {/* <Navbar /> */}
                         <Admin />
                     </PrivateRoute>
                     <PrivateRoute adminOnly={false} exact path="/form" >
                         <Navbar />
                         <Form />
+                    </PrivateRoute>
+                    <PrivateRoute adminOnly={false} exact path="/form2" >
+                        <Navbar />
+                        <Form2 />
                     </PrivateRoute>
                     <PublicRoute restricted={true} path="/login">
                         <Login />

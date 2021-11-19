@@ -1,0 +1,70 @@
+@import '../colors.scss';
+
+.confirm-delete {
+    z-index: 99;
+    position:fixed; 
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+
+
+    .confirm-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 170px;
+        height: 150px;
+        background-color: #fff;
+        font-size: 1.2em;
+        border: 3px solid $main_yellow;
+        position: relative;
+        
+        .modal-frame-wrapper {
+            position: absolute;
+            overflow: hidden;
+            pointer-events: none;
+            height: 100%;
+            width: 100%;
+    
+            .modal-frame {
+                height: auto;
+                width: 100%;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+            }
+    
+            .modal-frame-left {
+                left: 0;
+                transform: rotate(180deg);
+            }
+            
+            .modal-frame-right {
+                right: 0;
+                transform: rotate(180deg);
+            }
+    
+        }
+
+        button {
+            padding: 10px 5px;
+            background-color: $main_yellow;
+            cursor: pointer;
+            border: none;
+            margin: 5px;
+            padding: 10px 5px;
+            width: 50px;
+            &:hover {
+                background-color: $secondary_yellow;
+
+            }
+        }
+    }
+}
