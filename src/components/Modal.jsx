@@ -2,23 +2,24 @@ import React from 'react';
 import './Modal.scss';
 import topLeftFrame from '../img/frame_left_top_2.png';
 import topRightFrame from '../img/frame_right_2.png';
+import { useLanguage } from '../context/LanguageContext';
 
 function Modal({ action, closeModal }) {
+
+    const { currentText } = useLanguage();
+    const { yes, no, modalMessage } = currentText;
+
     return (
         <div className="confirm-delete">
 
             <div className="confirm-box">
-                <div className="modal-frame-wrapper">
-                    <img src={topLeftFrame} className="modal-frame modal-frame-left" alt="flowers" />
-                    <img src={topRightFrame} className="modal-frame modal-frame-right" alt="flowers" />
-                </div>
-                Are you sure?
+                {modalMessage}
                 <div>
                     <button onClick={() => {
                         action();
                         closeModal(false);
-                    }}>yes</button>
-                    <button onClick={() => closeModal(false)}>no</button>
+                    }}>{yes}</button>
+                    <button onClick={() => closeModal(false)}>{no}</button>
                 </div>
             </div>
         </div>

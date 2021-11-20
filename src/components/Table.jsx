@@ -61,11 +61,8 @@ const Table = ({ users, setUsers }) => {
                     <th>CP</th>
                     <th>City</th>
                     <th>Food</th>
-                    <th>Allergies</th>
                     <th>Plus one</th>
                     <th>Children</th>
-                    <th>Hotel</th>
-                    <th>Transport</th>
                     <th>Controls</th>
                 </tr>
             </thead>

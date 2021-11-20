@@ -25,33 +25,7 @@
         font-size: 1.2em;
         border: 3px solid $main_yellow;
         position: relative;
-        
-        .modal-frame-wrapper {
-            position: absolute;
-            overflow: hidden;
-            pointer-events: none;
-            height: 100%;
-            width: 100%;
-    
-            .modal-frame {
-                height: auto;
-                width: 100%;
-                pointer-events: none;
-                position: absolute;
-                top: 0;
-            }
-    
-            .modal-frame-left {
-                left: 0;
-                transform: rotate(180deg);
-            }
-            
-            .modal-frame-right {
-                right: 0;
-                transform: rotate(180deg);
-            }
-    
-        }
+
 
         button {
             padding: 10px 5px;
