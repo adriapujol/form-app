@@ -38,11 +38,8 @@ const TableRow = ({ user, number, setUsers }) => {
                 <td>{user.formAnswers.cp}</td>
                 <td>{user.formAnswers.city}</td>
                 <td>{user.formAnswers.typeFood}</td>
-                <td>{user.formAnswers.allergies}</td>
                 <td>{user.namePlusOne}</td>
                 <td>{user.numChildren}</td>
-                <td>{user.formAnswers.hotel}</td>
-                <td>{user.formAnswers.transport}</td>
                 <td>
                     <button onClick={() => setConfirmDelete(true)}>
                         <i class="fas fa-trash-alt"></i>
