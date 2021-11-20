@@ -23,11 +23,8 @@ function Register() {
     const onRegister = (e) => {
         e.preventDefault();
         setLoading(true);
-        // if (username !== "" && password !== "" && role) {
-        // }
         register(username, password, role);
         setLoading(false);
-
     }
 
     return (

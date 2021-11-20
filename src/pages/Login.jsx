@@ -13,7 +13,7 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const { currentUser, errorMessage, login } = useAuth();
+    const { errorMessage, login } = useAuth();
     const { currentText } = useLanguage();
     const { loginP1, loginP2, loginP3, loginP4, loginUsername, loginPassword, loginButton } = currentText;
 
@@ -73,7 +73,6 @@ function Login() {
                     </div>
                 </div>
             </div>
-            {/* <div>{currentUser && currentUser.username}</div> */}
         </div>
     )
 }
