@@ -226,35 +226,35 @@ const Form = () => {
                         <>
                             <div className="group-input">
                                 < label htmlFor="fname">{formFirstName}</label>
-                                <input type="text" id="fname" name="fname" placeholder={`${formFirstName}...`} value={formData.fname} onChange={handleChange} required />
+                                <input type="text" id="fname" maxLength="20" name="fname" placeholder={`${formFirstName}...`} value={formData.fname} onChange={handleChange} required />
                             </div>
                             <div className="group-input">
                                 <label htmlFor="lname">{formLastName}</label>
-                                <input type="text" id="lname" name="lname" placeholder={`${formLastName}...`} value={formData.lname} onChange={handleChange} required />
+                                <input type="text" id="lname" maxLength="20" name="lname" placeholder={`${formLastName}...`} value={formData.lname} onChange={handleChange} required />
                             </div>
                             <div className="group-input">
                                 <label htmlFor="address">{formAddress}</label>
-                                <input type="text" id="address" name="address" placeholder={`${formAddress}...`} value={formData.address} onChange={handleChange} required />
+                                <input type="text" id="address" name="address" maxLength="50" placeholder={`${formAddress}...`} value={formData.address} onChange={handleChange} required />
                             </div>
                             <div className="group-input">
                                 <label htmlFor="cp">{formCP}</label>
-                                <input type="text" id="cp" name="cp" placeholder={`${formCP}...`} value={formData.cp} onChange={handleChange} required />
+                                <input type="text" id="cp" maxLength="20" name="cp" placeholder={`${formCP}...`} value={formData.cp} onChange={handleChange} required />
                             </div>
                             <div className="group-input">
                                 <label htmlFor="city">{formCity}</label>
-                                <input type="text" id="city" name="city" placeholder={`${formCity}...`} value={formData.city} onChange={handleChange} required />
+                                <input type="text" id="city" maxLength="20" name="city" placeholder={`${formCity}...`} value={formData.city} onChange={handleChange} required />
                             </div>
                             <div className="group-input">
                                 <label htmlFor="tel">{formPhone}</label>
-                                <input type="text" id="phone" name="phone" placeholder={`${formPhone}...`} value={formData.phone} onChange={handleChange} />
+                                <input type="tel" id="phone" maxLength="50" name="phone" placeholder={`${formPhone}...`} value={formData.phone} onChange={handleChange} />
                             </div>
                             <div className="group-input">
                                 <label htmlFor="email">{formEmail}</label>
-                                <input type="email" id="email" name="email" placeholder={`${formEmail}...`} value={formData.email} onChange={handleChange} required />
+                                <input type="email" id="email" maxLength="50" name="email" placeholder={`${formEmail}...`} value={formData.email} onChange={handleChange} required />
                             </div>
                             <div className="group-input">
                                 <label htmlFor="typeFood">{formFood}</label>
-                                <input type="text" name="typeFood" placeholder={`${formFood.slice(0, 30)}...`} value={formData.typeFood} onChange={handleChange} />
+                                <input type="text" maxLength="150" name="typeFood" placeholder={`${formFood.slice(0, 30)}...`} value={formData.typeFood} onChange={handleChange} />
                                 <p>{formFoodMessage}</p>
                             </div>
                         </>

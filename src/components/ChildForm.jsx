@@ -14,19 +14,19 @@ function ChildForm({ totalChildren, child, index, handleChildrenChange }) {
                 <>
                     <div className="group-input">
                         <label htmlFor="fname">{formFirstName}</label>
-                        <input type="text" data-child={index} name="fname" placeholder={`${formFirstName}...`} value={child.fname} onChange={handleChildrenChange} required />
+                        <input type="text" data-child={index} maxLength="20" name="fname" placeholder={`${formFirstName}...`} value={child.fname} onChange={handleChildrenChange} required />
                     </div>
                     <div className="group-input">
                         <label htmlFor="lname">{formLastName}</label>
-                        <input type="text" data-child={index} name="lname" placeholder={`${formLastName}...`} value={child.lname} onChange={handleChildrenChange} />
+                        <input type="text" data-child={index} maxLength="20" name="lname" placeholder={`${formLastName}...`} value={child.lname} onChange={handleChildrenChange} />
                     </div>
                     <div className="group-input">
                         <label htmlFor="age">{formAge}</label>
-                        <input type="number" min="0" max="18" step="1" data-child={index} name="age" placeholder={`${formAge}...`} value={child.age} onChange={handleChildrenChange} />
+                        <input type="number" min="0" max="35" step="1" data-child={index} name="age" placeholder={`${formAge}...`} value={child.age} onChange={handleChildrenChange} />
                     </div>
                     <div className="group-input children-last-input">
                         <label htmlFor="typeFood">{formFood}</label>
-                        <input type="text" data-child={index} name="typeFood" placeholder={`${formFood.slice(0, 30)}...`} value={child.typeFood} onChange={handleChildrenChange} />
+                        <input type="text" data-child={index} maxLength="150" name="typeFood" placeholder={`${formFood.slice(0, 30)}...`} value={child.typeFood} onChange={handleChildrenChange} />
                     </div>
                 </>
             }
