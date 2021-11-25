@@ -34,15 +34,16 @@ function Login() {
 
     return (
         <div className="container">
-            <div className="lang-sel-box">
-                <LangSelect />
-            </div>
             <div className="login-card">
+
 
                 <img src={topRightFrame} className="top-right-frame" alt="flowers" />
                 <img src={bottomLeftFrame} className="bottom-left-frame" alt="flowers" />
 
                 <div className="login-content">
+                    <div className="lang-sel-box">
+                        <LangSelect />
+                    </div>
                     <div className="login-text">
                         <p>{loginP1}</p>
                         <p>{loginP2}</p>
