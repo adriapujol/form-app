@@ -74,6 +74,12 @@
                 font-family: 'Tangerine', cursive;                
             }
 
+            @media only screen and (min-width: 375px) {
+                
+                  font-size: 1.2em;
+                
+            }
+
         }
 
         .form-wrapper {
@@ -85,6 +91,11 @@
             margin-right: 3em;
             margin-bottom: 1.5em;
             // background-color: slateblue;
+            
+            @media only screen and (min-width: 375px) {
+                margin-right: 2.5em;               
+                
+            }
 
             .login-form {
                 display: flex;
@@ -93,6 +104,12 @@
                 align-items: center;
                 width: 55%;
                 max-width: 350px;
+
+                @media only screen and (min-width: 375px) {
+                    width: 60%;
+                    max-width: 350px;                  
+
+                }
 
                 input {
                     background-color: $light_grey;
@@ -122,6 +139,12 @@
                 .login-input, .login-btn {
                     padding: 7px;
                     width: 100%;
+
+                    @media only screen and (min-width: 375px) {
+
+                            padding: 10px;
+                            width: 100%;
+                    }
                 }
             }
         }
