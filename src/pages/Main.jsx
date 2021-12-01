@@ -76,7 +76,7 @@ const Main = () => {
                     </div>
                 </div>
                 {isComingAnswer && <Form />}
-                <img src={jenniferCarlos} className={isComingAnswer ? "jennifer-carlos bottom-img-relative" : "jennifer-carlos bottom-img-absolute"} alt="Jennifer et Carlos" />
+                <img src={jenniferCarlos} className={isComingAnswer ? "jennifer-carlos bottom-img-relative make-100" : "jennifer-carlos bottom-img-absolute"} alt="Jennifer et Carlos" />
             </div>
         </div >
     )

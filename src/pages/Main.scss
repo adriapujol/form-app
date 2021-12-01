@@ -20,6 +20,7 @@
         pointer-events: none;
         position: absolute;
         top: 0;
+        
     }
 
     .frame-left {
@@ -78,20 +79,46 @@
 
     .main-content {
         margin-top: 25%;
-        width: 60%;
+        width: 65%;
         text-align: center;
         font-size: 1.1em;
+
+        @media only screen and (device-width: 768px) and (device-height: 1024px) {
+            font-size: 1.3em;
+        }
+        @media only screen and (device-width: 1024px) and (device-height: 1366px) {
+            font-size: 1.7em;
+        }
 
 
         .main-text, .main-text b, p {
             font-family: 'Tangerine', cursive; 
             font-size: 1.3em;
+
+            @media only screen and (min-width: 360px) {
+                font-size: 1.4em;
+            }
+            @media only screen and (min-width: 411px) {
+                font-size: 1.6em;
+            }
+            // @media only screen and (device-width: 1024px) and (device-height: 1366px) {
+            //     font-size: 1.8em;
+            // }
         }
         .main-text {
             text-align: justify;
             text-align-last: center;
-            margin-bottom: 0.5em;            
-        
+            margin-bottom: 0.2em;  
+            @media only screen and (min-width: 375px) and (min-height: 667px) {
+                margin-bottom: 15px;
+            }
+            @media only screen and (min-width: 411px) and (min-height: 823px) {
+                margin-bottom: 30px;
+            }
+            @media only screen and (device-width: 375px) and (device-height: 812px) {
+                margin: 20px 0px 40px 0px;
+            }
+            
         }
 
         .small-flower {
@@ -173,11 +200,37 @@
 
 
     .jennifer-carlos {
-        width: 100%;
+        width: 90%;
         height: auto;
         bottom: 0;
-        left: 0.5em;
+        right: 0;
         pointer-events: none;
+
+        @media only screen and (min-width: 360px) and (min-height: 640px) {
+            width: 100%;
+            left: 0.5em;
+        }
+        @media only screen and (min-width: 411px) and (min-height: 823px) {
+            width: 110%;
+        }
+
+        @media only screen and (min-width: 568px) {
+            width: 50%;
+            right: 0;
+        }
+        @media only screen and (device-width: 768px) and (device-height: 1024px) {
+            width: 90%;
+            left: 5em;
+        }
+        @media only screen and (device-width: 1024px) and (device-height: 1366px) {
+            width: 90%;
+            left: 6.7em;
+        }
+    }
+
+    .make-100 {
+        width: 100%;
+        // left: 1.5em;
     }
 
     .bottom-img-absolute {

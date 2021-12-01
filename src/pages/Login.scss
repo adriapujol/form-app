@@ -97,6 +97,10 @@
                 margin-top: 0.5em;
             }
 
+            @media only screen and (device-width: 768px) {
+                font-size:1.8em;
+            }
+
             @media only screen and (min-height: 1300px) {
                 font-size: 2.4em;
                 margin-left: 4em;
@@ -117,6 +121,10 @@
             @media only screen and (min-width: 375px) {
                 margin-right: 2.5em;               
                 
+            }
+
+            @media only screen and (device-width: 768px) {
+                margin-right: 4em; 
             }
             @media only screen and (min-height: 1300px) {
                 margin-right: 9em; 
