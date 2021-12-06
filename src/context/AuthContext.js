@@ -20,7 +20,6 @@ export function AuthProvider({ children }) {
         try {
             const response = await axios.post('http://localhost:3001/user/register', userInfo, { withCredentials: true });
             const user = response.data;
-            console.log(user);
             setErrorMessage("");
             alert(`User ${user.username} added successfully!`);
 
@@ -43,7 +42,6 @@ export function AuthProvider({ children }) {
             setErrorMessage("");
             setLoading(false);
         } catch (error) {
-            console.log(error.response.data.error);
             if (error.message === "Network Error") {
                 setErrorMessage(error.message);
             } else {
@@ -58,7 +56,6 @@ export function AuthProvider({ children }) {
             await axios.get('http://localhost:3001/user/logout', { withCredentials: true });
             setCurrentUser(null);
         } catch (error) {
-            console.log(error);
             if (error.response.data.error) setErrorMessage(error.response.data.error);
         }
     }
@@ -69,7 +66,7 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         async function getUser() {
-            console.log("fired")
+
             try {
                 const response = await axios.get('http://localhost:3001/user/', { withCredentials: true });
                 const user = response.data;
@@ -79,8 +76,7 @@ export function AuthProvider({ children }) {
                 if (error.message === "Network Error") {
                     setErrorMessage(error.message);
                 } else {
-                    // console.log("this fired fired");
-                    // setErrorMessage(error.response.data.error);
+                    //ignore this
                 }
                 setLoading(false);
             }

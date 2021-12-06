@@ -18,10 +18,9 @@ const Admin = () => {
                 const response = await axios.get('http://localhost:3001/admin/users/', { withCredentials: true });
                 const filteredUsers = response.data.filter(user => user.role !== "admin");
                 setUsers(filteredUsers);
-                // console.log(response.data);
 
             } catch (err) {
-                console.log(err.response);
+                alert(err.response);
             }
         }
         getUsers();
@@ -69,7 +68,6 @@ const Admin = () => {
     }
 
     let formDoneFilterList = filterUserList(users);
-    console.log("this list is used: ", formDoneFilterList)
 
     const handleSelect = e => {
         e.preventDefault();
@@ -79,7 +77,7 @@ const Admin = () => {
 
     return (
         <div className="admin">
-            <Register></Register>
+            <Register />
             <div className="table-box">
                 <div className="info-box">
                     <div className="formFilter">

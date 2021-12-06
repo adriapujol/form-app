@@ -2,12 +2,8 @@
 
 .form-container {
     
-    // background-color: lightblue;
-    // border: 2px solid green;
     margin: 20px 0px;
     width: 100%;
-    // min-width: 450px;
-    // min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +65,6 @@
 
                 input {
                     padding: 5px 5px;
-                    // outline: none;
                     border: 1px solid $main_yellow;
                     outline-color: $main_yellow;
                 }
@@ -77,6 +72,7 @@
                 .plus-one-fine-print {
                     font-size: 0.8em;
                     color: $main_brown;
+                    margin: 1em 0em;
                 }
             }
 
@@ -93,7 +89,6 @@
                     margin-bottom: 10px;
                     font-size: 0.8em;
                     hyphens: auto;
-                    // word-break: normal;
                 }
 
             }

@@ -26,14 +26,13 @@ const Main = () => {
     const postIsComing = async (reply) => {
         try {
             const response = await axios.put(`http://localhost:3001/users/isComing/${currentUser._id}`, { isComing: reply });
-            console.log(response.data);
         } catch (error) {
-            console.log(error.response.data.message)
+            // console.log(error.response.data.message)
+            alert("Something went wrong");
         }
     }
 
     const handleIsComing = (reply) => {
-        console.log("this is the reply", reply)
         setIsComingAnswer(reply);
         postIsComing(reply);
     }
@@ -76,7 +75,7 @@ const Main = () => {
                     </div>
                 </div>
                 {isComingAnswer && <Form />}
-                <img src={jenniferCarlos} className={isComingAnswer ? "jennifer-carlos bottom-img-relative" : "jennifer-carlos bottom-img-absolute"} alt="Jennifer et Carlos" />
+                <img src={jenniferCarlos} className={isComingAnswer ? "jennifer-carlos bottom-img-relative make-100" : "jennifer-carlos bottom-img-absolute"} alt="Jennifer et Carlos" />
             </div>
         </div >
     )

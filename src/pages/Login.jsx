@@ -13,7 +13,7 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const { currentUser, errorMessage, login } = useAuth();
+    const { errorMessage, login } = useAuth();
     const { currentText } = useLanguage();
     const { loginP1, loginP2, loginP3, loginP4, loginUsername, loginPassword, loginButton } = currentText;
 
@@ -34,15 +34,16 @@ function Login() {
 
     return (
         <div className="container">
-            <div className="lang-sel-box">
-                <LangSelect />
-            </div>
             <div className="login-card">
+
 
                 <img src={topRightFrame} className="top-right-frame" alt="flowers" />
                 <img src={bottomLeftFrame} className="bottom-left-frame" alt="flowers" />
 
                 <div className="login-content">
+                    <div className="lang-sel-box">
+                        <LangSelect />
+                    </div>
                     <div className="login-text">
                         <p>{loginP1}</p>
                         <p>{loginP2}</p>
@@ -73,7 +74,6 @@ function Login() {
                     </div>
                 </div>
             </div>
-            {/* <div>{currentUser && currentUser.username}</div> */}
         </div>
     )
 }

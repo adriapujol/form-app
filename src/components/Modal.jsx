@@ -1,7 +1,5 @@
 import React from 'react';
 import './Modal.scss';
-import topLeftFrame from '../img/frame_left_top_2.png';
-import topRightFrame from '../img/frame_right_2.png';
 import { useLanguage } from '../context/LanguageContext';
 
 function Modal({ action, closeModal }) {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './TableRow.scss';
 import Modal from './Modal';
 
 
@@ -12,7 +11,6 @@ const TableRow = ({ user, number, setUsers }) => {
 
         try {
             const response = await axios.delete(`http://localhost:3001/admin/delete/${user._id}`, { withCredentials: true });
-            console.log(response);
             setUsers(prevUsers => {
                 return prevUsers.filter(u => u._id !== user._id);
             })

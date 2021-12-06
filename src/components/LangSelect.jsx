@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './LangSelect.scss';
 import { useLanguage } from '../context/LanguageContext';
 
-function Nav() {
+function LangSelect() {
 
     const { currentLanguage, setCurrentLanguage } = useLanguage();
 
@@ -14,11 +14,13 @@ function Nav() {
     return (
         <div className="languages">
             <select id="languages" name="langauges" value={currentLanguage} onChange={selectLanguage}>
-                <option value="fr">FR</option>
-                <option value="es">ES</option>
+                <optgroup>
+                    <option value="fr">FR</option>
+                    <option value="es">ES</option>
+                </optgroup>
             </select>
         </div>
     )
 }
 
-export default Nav
+export default LangSelect
