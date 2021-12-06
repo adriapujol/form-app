@@ -255,7 +255,7 @@ const Form = () => {
                             <div className="group-input">
                                 <label htmlFor="typeFood">{formFood}</label>
                                 <input type="text" maxLength="150" name="typeFood" placeholder={`${formFood.slice(0, 30)}...`} value={formData.typeFood} onChange={handleChange} />
-                                <p>{formFoodMessage}</p>
+                                <p className="plus-one-fine-print">{formFoodMessage}</p>
                             </div>
                         </>
                     }
