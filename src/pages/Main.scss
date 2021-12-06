@@ -84,12 +84,14 @@
         font-size: 1.1em;
 
         @media only screen and (device-width: 768px) and (device-height: 1024px) {
-            font-size: 1.3em;
-        }
-        @media only screen and (device-width: 1024px) and (device-height: 1366px) {
             font-size: 1.7em;
         }
-
+        @media only screen and (device-width: 1024px) and (device-height: 1366px) {
+            font-size: 2em;
+        }
+        @media only screen and (min-width: 420px) {
+            margin-top: 20%;
+        }
 
         .main-text, .main-text b, p {
             font-family: 'Tangerine', cursive; 
@@ -101,6 +103,9 @@
             @media only screen and (min-width: 411px) {
                 font-size: 1.6em;
             }
+            @media only screen and (min-width: 420px) {
+                font-size: 1.4em;
+            }
             // @media only screen and (device-width: 1024px) and (device-height: 1366px) {
             //     font-size: 1.8em;
             // }
@@ -109,6 +114,7 @@
             text-align: justify;
             text-align-last: center;
             margin-bottom: 0.2em;  
+
             @media only screen and (min-width: 375px) and (min-height: 667px) {
                 margin-bottom: 15px;
             }
@@ -117,6 +123,9 @@
             }
             @media only screen and (device-width: 375px) and (device-height: 812px) {
                 margin: 20px 0px 40px 0px;
+            }
+            @media only screen and (device-width: 768px) and (device-height: 1024px) {
+                margin-bottom: 10px;
             }
             
         }
@@ -214,10 +223,24 @@
             width: 110%;
         }
 
-        @media only screen and (min-width: 568px) {
-            width: 50%;
+        @media only screen and (min-width: 411px) {
+            width: 100%;
             right: 0;
         }
+        @media only screen and (min-width: 420px) {
+            width: 90%;
+            right: 0;
+        }
+
+        @media only screen and (device-width: 375px) and (device-height: 812px) {
+            width: 110%;
+            // left: 6.7em;
+        }
+        @media only screen and (device-width: 540px) and (device-height: 720px) {
+            width: 100%;
+            right: 0;
+        }
+
         @media only screen and (device-width: 768px) and (device-height: 1024px) {
             width: 90%;
             left: 5em;
