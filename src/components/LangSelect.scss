@@ -7,11 +7,6 @@
     height: 25px;    
     width: 40px;
 
-    // @media only screen and (min-width: 800px) {
-    //     height: 40px;    
-    //     width: 60px;
-    // }
-    
     select {
         height: 100%;
         width: 100%;
@@ -20,24 +15,15 @@
         border: 1px solid #000;
         background-color: #fff;
 
-        // @media only screen and (min-width: 800px) {
-        //     font-size: 1.4em;
-        // }
         optgroup {
             font-size: 1em;
         }
 
 
         &:focus {
-            // border: none;
-            // outline: none;
             outline: 1px solid #000;
         }
 
-        &:checked {
-            // border: none;
-            // outline: none;
-        }
     }
     
 }

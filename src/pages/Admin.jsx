@@ -20,7 +20,7 @@ const Admin = () => {
                 setUsers(filteredUsers);
 
             } catch (err) {
-                console.log(err.response);
+                alert(err.response);
             }
         }
         getUsers();
@@ -68,7 +68,6 @@ const Admin = () => {
     }
 
     let formDoneFilterList = filterUserList(users);
-    console.log("this list is used: ", formDoneFilterList)
 
     const handleSelect = e => {
         e.preventDefault();

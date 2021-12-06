@@ -68,9 +68,7 @@ const Form = () => {
 
     useEffect(() => {
         if (currentUser.formDone) {
-            console.log("Fired Update Form")
             setFormData(prevFormData => prevFormData = currentUser.formAnswers);
-            console.log("update effect")
 
             setTotalChildren(
                 currentUser.formAnswers.children.reduce((total, child) => {
@@ -180,19 +178,16 @@ const Form = () => {
     }
 
     const postForm = async () => {
-        console.log("SUBMIT")
         try {
             const response = await axios.put(`http://localhost:3001/users/form/${currentUser._id}`, formData);
-            console.log(response.data);
         } catch (error) {
-            console.log(error.response.data.message)
+            alert("There was an error, try again later.");
         }
     }
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        console.log(formData);
         setShowChildrenInfo(false);
         setShowPersonalInfo(false);
         setShowPlusOneInfo(false);
