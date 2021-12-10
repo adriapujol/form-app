@@ -96,6 +96,17 @@
             font-family: 'Tangerine', cursive; 
             font-size: 1.3em;
 
+            .maps {
+                color: $main_green;
+                font-size: 0.9em;
+                cursor: pointer;
+
+                &:hover {
+                    color: $secondary_yellow;
+                }
+            }
+
+
             @media only screen and (min-width: 360px) {
                 font-size: 1.4em;
             }
