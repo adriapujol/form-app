@@ -32,6 +32,20 @@ const Main = () => {
         }
     }
 
+
+
+    function mapsSelector() {
+        /* if we're on iOS, open in Apple Maps */
+        if ((navigator.userAgentData.platform.indexOf("iPhone") != -1) ||
+            (navigator.userAgentData.platform.indexOf("iPad") != -1) ||
+            (navigator.userAgentData.platform.indexOf("iPod") != -1))
+            window.open("maps://www.google.com/maps/search/?api=1&query=48.84653875051833%2C2.3480901057956385&query_place_id=ChIJq7TPJOZx5kcR424OXJ5cKgU");
+
+        /* else use Google */
+        else
+            window.open("https://www.google.com/maps/search/?api=1&query=48.84653875051833%2C2.3480901057956385&query_place_id=ChIJq7TPJOZx5kcR424OXJ5cKgU");
+    }
+
     const handleIsComing = (reply) => {
         setIsComingAnswer(reply);
         postIsComing(reply);
@@ -55,6 +69,7 @@ const Main = () => {
                 <div className="main-content">
                     <div className="main-text">
                         {mainMainText}
+                        <i className="fas fa-map-marker-alt maps" onClick={() => mapsSelector()} />
                     </div>
                     <img src={smallFlower} className="small-flower" alt="flower" />
                     <div className="button-box">
