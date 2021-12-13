@@ -15,7 +15,7 @@ const Admin = () => {
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/admin/users/', { withCredentials: true });
+                const response = await axios.get('https://jenniferetcarlos.herokuapp.com/admin/users/', { withCredentials: true });
                 const filteredUsers = response.data.filter(user => user.role !== "admin");
                 setUsers(filteredUsers);
 

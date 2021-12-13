@@ -10,7 +10,7 @@ const TableRow = ({ user, number, setUsers }) => {
     const deleteUser = async () => {
 
         try {
-            const response = await axios.delete(`http://localhost:3001/admin/delete/${user._id}`, { withCredentials: true });
+            const response = await axios.delete(`https://jenniferetcarlos.herokuapp.com/admin/delete/${user._id}`, { withCredentials: true });
             setUsers(prevUsers => {
                 return prevUsers.filter(u => u._id !== user._id);
             })
