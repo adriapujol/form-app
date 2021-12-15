@@ -72,7 +72,7 @@ const Form = () => {
 
             setTotalChildren(
                 currentUser.formAnswers.children.reduce((total, child) => {
-                    if (child.fname !== "" || child.lname !== "" || child.age > 0 || child.allergies !== "") total++;
+                    if (child.fname !== "" || child.lname !== "" || child.typeFood !== "") total++;
                     return total;
                 }, 0)
             );
@@ -179,7 +179,7 @@ const Form = () => {
 
     const postForm = async () => {
         try {
-            const response = await axios.put(`https://jenniferetcarlos.herokuapp.com/users/form/${currentUser._id}`, formData);
+            const response = await axios.put(`http://localhost:3001/users/form/${currentUser._id}`, formData);
         } catch (error) {
             alert("There was an error, try again later.");
         }
