@@ -25,7 +25,7 @@ const Main = () => {
 
     const postIsComing = async (reply) => {
         try {
-            const response = await axios.put(`http://localhost:3001/users/isComing/${currentUser._id}`, { isComing: reply });
+            const response = await axios.put(`https://jenniferetcarlos.herokuapp.com/users/isComing/${currentUser._id}`, { isComing: reply });
         } catch (error) {
             // console.log(error.response.data.message)
             alert("Something went wrong");
@@ -36,9 +36,9 @@ const Main = () => {
 
     function mapsSelector() {
         /* if we're on iOS, open in Apple Maps */
-        if ((navigator.userAgentData.platform.indexOf("iPhone") != -1) ||
-            (navigator.userAgentData.platform.indexOf("iPad") != -1) ||
-            (navigator.userAgentData.platform.indexOf("iPod") != -1))
+        if ((navigator.userAgentData.platform.indexOf("iPhone") !== -1) ||
+            (navigator.userAgentData.platform.indexOf("iPad") !== -1) ||
+            (navigator.userAgentData.platform.indexOf("iPod") !== -1))
             window.open("maps://www.google.com/maps/search/?api=1&query=48.84653875051833%2C2.3480901057956385&query_place_id=ChIJq7TPJOZx5kcR424OXJ5cKgU");
 
         /* else use Google */
