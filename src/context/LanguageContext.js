@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useLayoutEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import es from '../LanguagesText/es.json';
 import fr from '../LanguagesText/fr.json';
 
