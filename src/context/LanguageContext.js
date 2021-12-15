@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useLayoutEffect } from 'react';
 import es from '../LanguagesText/es.json';
 import fr from '../LanguagesText/fr.json';
 
@@ -11,9 +11,9 @@ export function useLanguage() {
 export function LanguageProvider({ children }) {
 
 
-    const defaultLanguage = window.localStorage.getItem('lang');
-    const [currentLanguage, setCurrentLanguage] = useState(defaultLanguage || "fr");
     const currentText = { es, fr };
+    let defaultLanguage = window.localStorage.getItem('lang');
+    const [currentLanguage, setCurrentLanguage] = useState(defaultLanguage || "fr");
 
     useEffect(() => {
         window.localStorage.setItem('lang', currentLanguage)
