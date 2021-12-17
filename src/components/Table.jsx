@@ -10,6 +10,13 @@ const Table = ({ users, setUsers }) => {
     const sortedUsers = useMemo(() => {
         const sortedList = [...users];
 
+        if (sortedField === "isComing") {
+            sortedList.sort((a, b) => {
+                if (a.[sortedField] < b.[sortedField]) return sortedDirection === "ascending" ? -1 : 1;
+                if (a.[sortedField] > b.[sortedField]) return sortedDirection === "ascending" ? 1 : -1;
+                return 0;
+            });
+        }
         if (sortedField !== null) {
             sortedList.sort((a, b) => {
                 if (a.formAnswers[sortedField] < b.formAnswers[sortedField]) return sortedDirection === "ascending" ? -1 : 1;
@@ -17,6 +24,8 @@ const Table = ({ users, setUsers }) => {
                 return 0;
             });
         }
+
+
 
         return sortedList;
     }, [sortedField, sortedDirection, users]);
@@ -42,17 +51,21 @@ const Table = ({ users, setUsers }) => {
                 <tr>
                     <th>num</th>
                     <th>username</th>
-                    <th>Coming</th>
+                    <th>Coming
+                        <button onClick={() => requestSort("isComing")}>
+                            <i className="fas fa-sort"></i>
+                        </button>
+                    </th>
                     <th>
                         First Name
                         <button onClick={() => requestSort("fname")}>
-                            <i class="fas fa-sort"></i>
+                            <i className="fas fa-sort"></i>
                         </button>
                     </th>
                     <th>
                         Last Name
                         <button onClick={() => requestSort("lname")}>
-                            <i class="fas fa-sort"></i>
+                            <i className="fas fa-sort"></i>
                         </button>
                     </th>
                     <th>Address</th>

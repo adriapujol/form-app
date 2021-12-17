@@ -25,7 +25,7 @@ const Main = () => {
 
     const postIsComing = async (reply) => {
         try {
-            const response = await axios.put(`http://localhost:3001/users/isComing/${currentUser._id}`, { isComing: reply });
+            const response = await axios.put(`https://jenniferetcarlos.herokuapp.com/users/isComing/${currentUser._id}`, { isComing: reply });
         } catch (error) {
             // console.log(error.response.data.message)
             alert("Something went wrong");

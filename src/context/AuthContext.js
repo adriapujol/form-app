@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
         const userInfo = { username: username, password: password, role: role };
 
         try {
-            const response = await axios.post('http://localhost:3001/user/register', userInfo, { withCredentials: true });
+            const response = await axios.post('https://jenniferetcarlos.herokuapp.com/user/register', userInfo, { withCredentials: true });
             const user = response.data;
             setErrorMessage("");
             alert(`User ${user.username} added successfully!`);
@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
 
         const userInfo = { username: username, password: password };
         try {
-            const response = await axios.post('http://localhost:3001/user/login', userInfo, { withCredentials: true });
+            const response = await axios.post('https://jenniferetcarlos.herokuapp.com/user/login', userInfo, { withCredentials: true });
             const user = response.data;
             setCurrentUser(user);
             setErrorMessage("");
@@ -53,7 +53,7 @@ export function AuthProvider({ children }) {
 
     async function logout() {
         try {
-            await axios.get('http://localhost:3001/user/logout', { withCredentials: true });
+            await axios.get('https://jenniferetcarlos.herokuapp.com/user/logout', { withCredentials: true });
             setCurrentUser(null);
         } catch (error) {
             if (error.response.data.error) setErrorMessage(error.response.data.error);
@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
         async function getUser() {
 
             try {
-                const response = await axios.get('http://localhost:3001/user/', { withCredentials: true });
+                const response = await axios.get('https://jenniferetcarlos.herokuapp.com/user/', { withCredentials: true });
                 const user = response.data;
                 setCurrentUser(user);
                 setLoading(false);

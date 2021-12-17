@@ -8,14 +8,14 @@ import Register from '../components/Register';
 const Admin = () => {
 
     const [users, setUsers] = useState([]);
-    const [formAnswered, setFormAnswered] = useState("Form Answered");
+    const [formAnswered, setFormAnswered] = useState("Coming");
     const [userTotalNumber, setUserTotalNumber] = useState();
     const [userTotalFormDoneNumber, setUserTotalFormDoneNumber] = useState();
 
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/admin/users/', { withCredentials: true });
+                const response = await axios.get('https://jenniferetcarlos.herokuapp.com/admin/users/', { withCredentials: true });
                 const filteredUsers = response.data.filter(user => user.role !== "admin");
                 setUsers(filteredUsers);
 
@@ -29,7 +29,7 @@ const Admin = () => {
         if (users.length > 0) {
             setUserTotalNumber(users.length);
             setUserTotalFormDoneNumber(users.reduce((total, user) => {
-                if (user.formDone) { total++ };
+                if (user.isComing) { total++ };
                 return total;
             }, 0))
         }
@@ -61,8 +61,10 @@ const Admin = () => {
         const formatedList = formatUserList(userList);
         let filteredList = formatedList;
 
-        if (formAnswered === "Form Answered") return filteredList = formatedList.filter(user => user.formDone === true);
-        if (formAnswered === "Form Not Answered") return filteredList = formatedList.filter(user => user.formDone === false);
+        if (formAnswered === "Form Answered") return filteredList = formatedList.filter(user => user.formDone === true && user.isComing === "yes");
+        if (formAnswered === "Form Not Answered") return filteredList = formatedList.filter(user => user.formDone === false && user.isComing === "yes");
+        if (formAnswered === "Coming") return filteredList = formatedList.filter(user => user.isComing === "yes");
+        if (formAnswered === "Not Coming") return filteredList = formatedList.filter(user => user.isComing === "no");
 
         return filteredList;
     }
@@ -82,6 +84,8 @@ const Admin = () => {
                 <div className="info-box">
                     <div className="formFilter">
                         <select id="formFilter" name="formFilter" value={formAnswered} onChange={handleSelect}>
+                            <option value="Coming">Coming</option>
+                            <option value="Not Coming">Not Coming</option>
                             <option value="Form Answered">Form Answered</option>
                             <option value="Form Not Answered" >Form Not Answered</option>
                             <option value="All users">All users</option>

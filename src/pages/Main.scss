@@ -179,9 +179,11 @@
                     transition: all 0.5s ease-in-out;
                 }
                 .btn-yes {
-                    background-color: $main_yellow;
+                    color: $mild_grey;
+                    background-color: $light_grey;
 
                     &:hover {
+                        color: #fff;
                         background-color: $secondary_yellow;
                     }
                 }

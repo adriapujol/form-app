@@ -89,7 +89,7 @@ function ToExcel({ users, fullData }) {
             enclosingCharacter={`"`}
             className="toExcel"
         >
-            <i class="fas fa-file-download"></i>
+            <i className="fas fa-file-download"></i>
         </CSVLink>
     )
 }

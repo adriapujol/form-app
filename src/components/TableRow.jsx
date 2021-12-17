@@ -10,7 +10,7 @@ const TableRow = ({ user, number, setUsers }) => {
     const deleteUser = async () => {
 
         try {
-            const response = await axios.delete(`http://localhost:3001/admin/delete/${user._id}`, { withCredentials: true });
+            const response = await axios.delete(`https://jenniferetcarlos.herokuapp.com/admin/delete/${user._id}`, { withCredentials: true });
             setUsers(prevUsers => {
                 return prevUsers.filter(u => u._id !== user._id);
             })
@@ -40,7 +40,7 @@ const TableRow = ({ user, number, setUsers }) => {
                 <td>{user.numChildren}</td>
                 <td>
                     <button onClick={() => setConfirmDelete(true)}>
-                        <i class="fas fa-trash-alt"></i>
+                        <i className="fas fa-trash-alt"></i>
                     </button>
                 </td>
             </tr>
